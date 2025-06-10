@@ -150,6 +150,9 @@ body {
   .my-task-container input{
    width: 100%;
   }
+  .projects-container input{
+   width: 95%;
+  }
 }
 
 @media (max-width:861px) {
@@ -172,4 +175,8 @@ body {
   .my-task-container{
     margin-left: 10px;
   }
+  .projects-container{
+    margin-left: 10px;
+  }
 }
+
