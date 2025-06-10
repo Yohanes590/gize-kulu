@@ -4,7 +4,21 @@ import { MdSpaceDashboard  ,MdFormatListBulletedAdd ,MdOutlinePlaylistAdd} from 
 import { GoTasklist } from "react-icons/go";
 import { FaDiagramProject } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { useState } from "react";
 export default function SideNavBar() {
+      const [openSlider, setSlider] = useState<boolean>(true)
+      const OpenSliderFunction = () => {
+          const SliderComponent = document.querySelector(".user-profile-show") as HTMLElement
+            if (openSlider === true) {
+                  setSlider(false)
+                  SliderComponent.style.height = "100px"
+                  SliderComponent.style.paddingTop = "15px"
+            } else if(openSlider === false){
+                  setSlider(true)
+                  SliderComponent.style.height = "0px"
+                  SliderComponent.style.paddingTop = "0px"  
+            }
+      }
       return (<>
             <div className="side-nav-container w-[350px] h-[100%] fixed cursor-default z-40 shadow-[0_0_5px_#bfbfbf]">
                   <div className="sub-container pt-[50px] ">
@@ -36,8 +50,12 @@ export default function SideNavBar() {
 
                   </div>
             </div>
-            <div className="user-profile-letter right-20 w-[40px] h-[40px] flex bg-violet-500 font-bold text-white rounded-[50%] cursor-pointer justify-center items-center fixed z-40 mt-[30px]">
-                        A
-                  </div>
+            <div onClick={OpenSliderFunction} className="user-profile-letter right-20 w-[40px] h-[40px] flex bg-violet-500 font-bold text-white rounded-[50%] cursor-pointer justify-center items-center fixed z-40 mt-[30px]">
+                        Y
+            </div>
+            <div className="user-profile-show transition-all duration-600 cursor-default fixed right-3 rounded-[10px] mt-[80px] bg-[#eeeeee] w-[auto] pl-[20px] pr-[20px] h-[0px] overflow-hidden">
+                  <div className="h-[40px] text-[var(--blue-color)]">Yohanes Mulugeta</div>
+                  <div className="h-[40px] text-[var(--blue-color)]">jplussince34@gmail.com</div>
+            </div>
       </>)
 }
