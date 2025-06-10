@@ -9,7 +9,8 @@ export type Payment = {
   task_name: string,
   status: string,
   startDate: string,
-  deuDate:string
+  dueDate: string,
+  action:string,
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -26,7 +27,16 @@ export const columns: ColumnDef<Payment>[] = [
     header: "Started Date",
   },
   {
-    accessorKey: "deuDate",
+    accessorKey: "dueDate",
     header: "Due Date",
+  },
+  {
+    accessorKey: "action",
+    header: "Action",
+    cell: ({row}) => {
+      return (<>
+        <button className="bg-red-400 text-white w-[90px] cursor-pointer h-[30px]" onClick={()=>console.log(row.original.id)}>Delete</button>
+      </>)
+    }
   },
 ]
