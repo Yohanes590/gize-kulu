@@ -10,7 +10,8 @@ export type Payment = {
   status: string,
   startDate: string,
   dueDate: string,
-  action:string,
+  assignProject:string,
+  action: string,
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -29,6 +30,10 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "dueDate",
     header: "Due Date",
+  },
+  {
+    accessorKey: "assignProject",
+    header: "Assign To",
   },
   {
     accessorKey: "action",

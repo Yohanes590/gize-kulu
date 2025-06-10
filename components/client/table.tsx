@@ -5,166 +5,142 @@ export default function DataTableFunction() {
 
 
   const data: Payment[] = [
-  {
-    "id": "a1b2c3d4",
-    "task_name": "Implement User Authentication",
-    "status": "In Progress",
-    "startDate": "15/01/2024",
-    "dueDate": "30/01/2024",
-    "action": ""
-  },
-  {
-    "id": "e5f6g7h8",
-    "task_name": "Design Dashboard UI",
-    "status": "Completed",
-    "startDate": "10/01/2024",
-    "dueDate": "25/01/2024",
-    "action": ""
-  },
-  {
-    "id": "i9j0k1l2",
-    "task_name": "Fix API Endpoints",
-    "status": "Pending",
-    "startDate": "20/01/2024",
-    "dueDate": "05/02/2024",
-    "action": ""
-  },
-  {
-    "id": "m3n4o5p6",
-    "task_name": "Write Documentation",
-    "status": "Not Started",
-    "startDate": "01/02/2024",
-    "dueDate": "15/02/2024",
-    "action": ""
-  },
-  {
-    "id": "q7r8s9t0",
-    "task_name": "Optimize Database Queries",
-    "status": "In Progress",
-    "startDate": "18/01/2024",
-    "dueDate": "28/01/2024",
-    "action": ""
-  },
-  {
-    "id": "u1v2w3x4",
-    "task_name": "Create Unit Tests",
-    "status": "Blocked",
-    "startDate": "22/01/2024",
-    "dueDate": "10/02/2024",
-    "action": ""
-  },
-  {
-    "id": "y5z6a7b8",
-    "task_name": "Deploy to Staging",
-    "status": "Pending",
-    "startDate": "25/01/2024",
-    "dueDate": "05/02/2024",
-    "action": ""
-  },
-  {
-    "id": "c9d0e1f2",
-    "task_name": "Review Pull Requests",
-    "status": "In Progress",
-    "startDate": "12/01/2024",
-    "dueDate": "19/01/2024",
-    "action": ""
-  },
-  {
-    "id": "g3h4i5j6",
-    "task_name": "Update Dependencies",
-    "status": "Completed",
-    "startDate": "05/01/2024",
-    "dueDate": "12/01/2024",
-    "action": ""
-  },
-  {
-    "id": "k7l8m9n0",
-    "task_name": "Create Analytics Dashboard",
-    "status": "Not Started",
-    "startDate": "30/01/2024",
-    "dueDate": "15/02/2024",
-    "action": ""
-  },
-  {
-    "id": "o1p2q3r4",
-    "task_name": "Fix Mobile Responsiveness",
-    "status": "In Progress",
-    "startDate": "17/01/2024",
-    "dueDate": "31/01/2024",
-    "action": ""
-  },
-  {
-    "id": "s5t6u7v8",
-    "task_name": "Implement Dark Mode",
-    "status": "Pending",
-    "startDate": "22/01/2024",
-    "dueDate": "08/02/2024",
-    "action": ""
-  },
-  {
-    "id": "w9x0y1z2",
-    "task_name": "Conduct User Testing",
-    "status": "Scheduled",
-    "startDate": "05/02/2024",
-    "dueDate": "20/02/2024",
-    "action": ""
-  },
-  {
-    "id": "a3b4c5d6",
-    "task_name": "Refactor Legacy Code",
-    "status": "In Progress",
-    "startDate": "10/01/2024",
-    "dueDate": "30/01/2024",
-    "action": ""
-  },
-  {
-    "id": "e7f8g9h0",
-    "task_name": "Setup CI/CD Pipeline",
-    "status": "Completed",
-    "startDate": "03/01/2024",
-    "dueDate": "15/01/2024",
-    "action": ""
-  },
-  {
-    "id": "i1j2k3l4",
-    "task_name": "Create Admin Panel",
-    "status": "Pending",
-    "startDate": "25/01/2024",
-    "dueDate": "10/02/2024",
-    "action": ""
-  },
-  {
-    "id": "m5n6o7p8",
-    "task_name": "Implement Payment Gateway",
-    "status": "In Progress",
-    "startDate": "15/01/2024",
-    "dueDate": "05/02/2024",
-    "action": ""
-  },
-  {
-    "id": "q9r0s1t2",
-    "task_name": "Write API Documentation",
-    "status": "Not Started",
-    "startDate": "28/01/2024",
-    "dueDate": "12/02/2024",
-    "action": ""
-  },
-  {
-    "id": "u3v4w5x6",
-    "task_name": "Optimize Frontend Performance",
-    "status": "Scheduled",
-    "startDate": "08/02/2024",
-    "dueDate": "22/02/2024",
-    "action": ""
-  },
-  {
-    "id": "y7z8a9b0",
-    "task_name": "Conduct Security Audit",
-    "status": "Pending",
-    "startDate": "20/01/2024",
-    "dueDate": "10/02/2024",
-    "action": ""
-  }
+    {
+      "id": "7d3f9a2e",
+      "task_name": "Refactor Payment Module",
+      "status": "In Progress",
+      "startDate": "05/03/2024",
+      "dueDate": "20/03/2024",
+      "action": "",
+      "assignProject": "E-Commerce Platform"
+    },
+    {
+      "id": "b4c8e1f6",
+      "task_name": "Implement Dark Mode",
+      "status": "Pending Review",
+      "startDate": "10/03/2024",
+      "dueDate": "25/03/2024",
+      "action": "",
+      "assignProject": "Mobile App Redesign"
+    },
+    {
+      "id": "9a2d5f7c",
+      "task_name": "Database Optimization",
+      "status": "Completed",
+      "startDate": "15/02/2024",
+      "dueDate": "28/02/2024",
+      "action": "",
+      "assignProject": "Backend Services"
+    },
+    {
+      "id": "e6f3b8d1",
+      "task_name": "User Profile Redesign",
+      "status": "Not Started",
+      "startDate": "01/04/2024",
+      "dueDate": "15/04/2024",
+      "action": "",
+      "assignProject": "UI/UX Overhaul"
+    },
+    {
+      "id": "2c7a9e4d",
+      "task_name": "API Security Audit",
+      "status": "Blocked",
+      "startDate": "12/03/2024",
+      "dueDate": "30/03/2024",
+      "action": "",
+      "assignProject": "Security Initiative"
+    },
+    {
+      "id": "5d1f8b3e",
+      "task_name": "Mobile Push Notifications",
+      "status": "In Development",
+      "startDate": "08/03/2024",
+      "dueDate": "22/03/2024",
+      "action": "",
+      "assignProject": "Customer Engagement"
+    },
+    {
+      "id": "f8e2a6d9",
+      "task_name": "Analytics Dashboard",
+      "status": "QA Testing",
+      "startDate": "18/02/2024",
+      "dueDate": "05/03/2024",
+      "action": "",
+      "assignProject": "Business Intelligence"
+    },
+    {
+      "id": "3b6c9d2a",
+      "task_name": "Inventory Management",
+      "status": "In Progress",
+      "startDate": "22/03/2024",
+      "dueDate": "10/04/2024",
+      "action": "",
+      "assignProject": "Warehouse System"
+    },
+    {
+      "id": "d4e7f1c8",
+      "task_name": "Multi-language Support",
+      "status": "Planning",
+      "startDate": "05/04/2024",
+      "dueDate": "25/04/2024",
+      "action": "",
+      "assignProject": "Global Expansion"
+    },
+    {
+      "id": "a9c3e6f2",
+      "task_name": "Payment Gateway Integration",
+      "status": "In Progress",
+      "startDate": "14/03/2024",
+      "dueDate": "04/04/2024",
+      "action": "",
+      "assignProject": "Checkout System"
+    },
+    {
+      "id": "6b2d8f1e",
+      "task_name": "Automated Testing Suite",
+      "status": "Completed",
+      "startDate": "10/02/2024",
+      "dueDate": "28/02/2024",
+      "action": "",
+      "assignProject": "QA Infrastructure"
+    },
+    {
+      "id": "1e9f4d7c",
+      "task_name": "Search Algorithm Update",
+      "status": "In Development",
+      "startDate": "20/03/2024",
+      "dueDate": "12/04/2024",
+      "action": "",
+      "assignProject": "Search Engine"
+    },
+    {
+      "id": "c8a3d6f2",
+      "task_name": "Data Migration",
+      "status": "Pending",
+      "startDate": "25/03/2024",
+      "dueDate": "15/04/2024",
+      "action": "",
+      "assignProject": "Database Upgrade"
+    },
+    {
+      "id": "4f7b2e9d",
+      "task_name": "Accessibility Improvements",
+      "status": "Not Started",
+      "startDate": "01/05/2024",
+      "dueDate": "20/05/2024",
+      "action": "",
+      "assignProject": "Compliance"
+    },
+    {
+      "id": "e2d9a5f1",
+      "task_name": "Performance Optimization",
+      "status": "In Progress",
+      "startDate": "15/03/2024",
+      "dueDate": "05/04/2024",
+      "action": "",
+      "assignProject": "Core Platform"
+    }
+  
 ]
 
 
