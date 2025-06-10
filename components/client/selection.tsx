@@ -9,7 +9,7 @@ import {
 export default function Selection() {
       return (<>
       <Select>
-  <SelectTrigger className="w-[95%]">
+  <SelectTrigger className="w-[95%] h-[30px]">
     <SelectValue placeholder="My Test WorkSpace" />
   </SelectTrigger>
   <SelectContent>

@@ -132,3 +132,36 @@ body {
   color:white;
   transition: all 400ms;
 }
+
+@media (max-width:1812px) {
+  .each-chart-card{
+    width:95%;
+    overflow: hidden;
+    height: auto;
+  }
+}
+
+@media (max-width:1119px) {
+  .each-dashboard-card{
+    width:95%;
+  }
+}
+
+@media (max-width:861px) {
+  .dashboard-container{
+    margin-left: 10px;
+  }
+  .chart-section-card{
+    margin-left: 10px;
+  }
+  .side-nav-container{
+    width: 0px;
+    overflow: hidden;
+  }
+  .user-profile-letter{
+    display: none;
+  }
+  .hidden-menu-icon{
+    display: flex;
+  }
+}

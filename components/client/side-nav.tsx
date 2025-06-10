@@ -1,12 +1,15 @@
-import { IoAdd ,IoSettings } from "react-icons/io5";
+"use client"
+import { IoAdd, IoSettings } from "react-icons/io5";
 import Selection from "./selection";
 import { MdSpaceDashboard  ,MdFormatListBulletedAdd ,MdOutlinePlaylistAdd} from "react-icons/md";
 import { GoTasklist } from "react-icons/go";
 import { FaDiagramProject } from "react-icons/fa6";
-import { RiLogoutCircleLine } from "react-icons/ri";
+import { RiLogoutCircleLine, RiMenu2Line } from "react-icons/ri";
+import { CgMenuRightAlt } from "react-icons/cg";
 import { useState } from "react";
 export default function SideNavBar() {
       const [openSlider, setSlider] = useState<boolean>(true)
+      const [ mainBar ,setMainBar ] = useState<boolean>(true)
       const OpenSliderFunction = () => {
           const SliderComponent = document.querySelector(".user-profile-show") as HTMLElement
             if (openSlider === true) {
@@ -19,8 +22,18 @@ export default function SideNavBar() {
                   SliderComponent.style.paddingTop = "0px"  
             }
       }
+      const OpenMainBar = () => {
+            const MainBarElement = document.querySelector(".side-nav-container") as HTMLElement;
+            if (mainBar === true) {
+                  setMainBar(false)
+                  MainBarElement.style.width="350px"
+            } else {
+                  setMainBar(true)
+                  MainBarElement.style.width="0px" 
+            }
+      }
       return (<>
-            <div className="side-nav-container w-[350px] h-[100%] fixed cursor-default z-40 shadow-[0_0_5px_#bfbfbf]">
+            <div className="side-nav-container transition-all duration-700 bg-white w-[350px] h-[100%] fixed cursor-default z-40 shadow-[0_0_5px_#bfbfbf]">
                   <div className="sub-container pt-[50px] ">
                         
                         <div className="logo-space">
@@ -44,7 +57,7 @@ export default function SideNavBar() {
                               <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdOutlinePlaylistAdd/>Add Project</div>
                               <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><IoSettings />Setting</div>
                               <div className="logout-button mt-[100px]  cursor-pointer">
-                                    <div className="logout-hover w-[100%] pl-[10px] h-[50px] bg-red-400 text-white flex items-center gap-5"><RiLogoutCircleLine/>Logout</div>
+                                    <div className="logout-hover w-[100%] pl-[10px] h-[50px] text-red-500 transition duration-500 hover:bg-red-400 hover:text-white flex items-center gap-5"><RiLogoutCircleLine/>Logout</div>
                               </div>
                   </div>
 
@@ -56,6 +69,9 @@ export default function SideNavBar() {
             <div className="user-profile-show transition-all duration-600 cursor-default fixed right-3 rounded-[10px] mt-[80px] bg-[#eeeeee] w-[auto] pl-[20px] pr-[20px] h-[0px] overflow-hidden">
                   <div className="h-[40px] text-[var(--blue-color)]">Yohanes Mulugeta</div>
                   <div className="h-[40px] text-[var(--blue-color)]">jplussince34@gmail.com</div>
+            </div>
+            <div onClick={OpenMainBar} className="hidden-menu-icon hidden fixed rounded-[50%] right-[20px] z-40 mt-[20px] h-[50px] w-[50px]  justify-center items-center bg-violet-500 text-white">
+                  <CgMenuRightAlt size={30}/>
             </div>
       </>)
 }
