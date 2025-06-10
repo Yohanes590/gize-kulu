@@ -6,16 +6,16 @@ import {
       SelectTrigger,
       SelectValue,
     } from "@/components/ui/select"
-export default function Selection() {
+export default function ProjectSelection() {
       return (<>
-      <Select>
-          <SelectTrigger className="w-[95%] " style={{
+            <Select>
+          <SelectTrigger className="w-[650px]" style={{
     height:"50px"
   }}>
-    <SelectValue placeholder="My Test WorkSpace" />
+    <SelectValue placeholder="Select Project" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="light">My Test WorkSpace</SelectItem>
+    <SelectItem value="My Test Project">MY TEST PROJECT</SelectItem>
   </SelectContent>
 </Select>
       </>)

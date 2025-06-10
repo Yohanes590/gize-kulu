@@ -1,3 +1,4 @@
+"use client"
 import { columns, Payment } from "./table-data/columns"
 import { DataTable } from "./table-data/data-table"
 import React, { useState } from "react"
