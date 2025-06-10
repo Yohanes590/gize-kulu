@@ -147,6 +147,12 @@ body {
   }
 }
 
+@media (max-width:438px) {
+  .my-task-container input{
+   width: 100%;
+  }
+}
+
 @media (max-width:861px) {
   .dashboard-container{
     margin-left: 10px;
@@ -163,5 +169,8 @@ body {
   }
   .hidden-menu-icon{
     display: flex;
+  }
+  .my-task-container{
+    margin-left: 10px;
   }
 }
