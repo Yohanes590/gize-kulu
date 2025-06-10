@@ -14,7 +14,7 @@ const data:Payment[] =    [{
 
 
 
-  const [filterObj, setFilterObj] = useState<Payment[]>([]);
+  const [filterObj, setFilterObj] = useState<Payment[]>(data);
     
 const findingDataFromTable = (inputValue: string) => {
   const FilterData = data.filter(projectName => projectName.task_name.toLowerCase().includes(inputValue.toLowerCase()))
