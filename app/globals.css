@@ -178,5 +178,42 @@ body {
   .projects-container{
     margin-left: 10px;
   }
+  .setting-container{
+    margin-left: 10px;
+  }
+  .adding-project-function{
+    margin-left: 10px;
+  }
 }
 
+@media(max-width:998px){
+  .input-card-section{
+    width: 95%;
+  }
+  .adding-project-input-section input{
+    width:95%
+  }
+  .adding-project-input-section .project-date-picker{
+    width:95%
+  }
+  .adding-project-input-section textarea{
+    width:95%
+  }
+  .danger-zone-information{
+    width: 95%;
+    margin-left: 0px;
+  }
+  .input-card-section input{
+    width: 95%;
+  }
+  .danger-zone-information input{
+    width: 95%;
+  }
+  .input-card-section button{
+    width: 95%;
+  }
+  .danger-zone-information button{
+    margin-left: 9px;
+    width: 95%;
+  }
+}

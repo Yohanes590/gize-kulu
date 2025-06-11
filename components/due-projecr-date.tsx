@@ -20,7 +20,7 @@ export default function ProjectDueDate() {
               <Button
                 variant="outline"
                 id="date"
-                className="w-[650px] justify-between font-normal"
+                className="project-date-picker w-[650px] justify-between font-normal"
                 style={{
                   height:"50px"
                 }}
