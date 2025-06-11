@@ -4,14 +4,43 @@ import Selection from "./selection";
 import { MdSpaceDashboard  ,MdFormatListBulletedAdd ,MdOutlinePlaylistAdd} from "react-icons/md";
 import { GoTasklist } from "react-icons/go";
 import { FaDiagramProject } from "react-icons/fa6";
-import { RiLogoutCircleLine, RiMenu2Line } from "react-icons/ri";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import Link from "next/link";
 import { CgMenuRightAlt } from "react-icons/cg";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 export default function SideNavBar() {
+
+      useEffect(() => {
+         function CheckRouterPath() {
+            const PathName = window.location.pathname;
+               const dashboardElement = document.getElementById("dashboard") as HTMLElement
+               const MytaskElement = document.getElementById("my-task") as HTMLElement
+               const AddTaskElement = document.getElementById("add-task") as HTMLElement
+               const Projects = document.getElementById("projects") as HTMLElement
+               const AddProject = document.getElementById("add-project") as HTMLElement
+               const setting = document.getElementById("setting") as HTMLElement
+            if (PathName === "/dashboard") {
+                  dashboardElement.classList.add("active-class")
+            } else if (PathName === "/my-task") {
+                  MytaskElement.classList.add("active-class")
+            } else if (PathName === "/add-task") {
+                  AddTaskElement.classList.add("active-class")
+            } else if (PathName === "/projects") {
+                  Projects.classList.add("active-class")
+            } else if (PathName === "/add-project") {
+                  AddProject.classList.add("active-class")
+            } else if (PathName === "/setting") {
+                  setting.classList.add("active-class")
+            }
+            }  
+      CheckRouterPath()      
+      },[])
+     
+
       const [openSlider, setSlider] = useState<boolean>(true)
       const [ mainBar ,setMainBar ] = useState<boolean>(true)
       const OpenSliderFunction = () => {
-          const SliderComponent = document.querySelector(".user-profile-show") as HTMLElement
+            const SliderComponent = document.querySelector(".user-profile-show") as HTMLElement
             if (openSlider === true) {
                   setSlider(false)
                   SliderComponent.style.height = "100px"
@@ -50,15 +79,15 @@ export default function SideNavBar() {
                               <Selection/>
                         </div>
                         <div className="button-component text-[18px] mt-[40px]">
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdSpaceDashboard/>Dashboard</div>
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><GoTasklist/>My Task</div>
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdFormatListBulletedAdd/>Add Task</div>
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><FaDiagramProject/>Projects</div>
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdOutlinePlaylistAdd/>Add Project</div>
-                              <div className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><IoSettings />Setting</div>
-                              <div className="logout-button mt-[100px]  cursor-pointer">
+                              <Link href="/dashboard"><div id="dashboard" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdSpaceDashboard/>Dashboard</div></Link>
+                              <Link href="/my-task"><div id="my-task" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><GoTasklist/>My Task</div></Link>
+                              <Link href="/add-task"><div id="add-task" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdFormatListBulletedAdd/>Add Task</div></Link>
+                              <Link href="/projects"><div id="projects" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><FaDiagramProject/>Projects</div></Link>
+                              <Link href="/add-project"><div id="add-project" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdOutlinePlaylistAdd/>Add Project</div></Link>
+                              <Link href="/setting"><div id="setting" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><IoSettings />Setting</div></Link>
+                              <Link href=""><div className="logout-button mt-[100px]  cursor-pointer">
                                     <div className="logout-hover w-[100%] pl-[10px] h-[50px] text-red-500 transition duration-500 hover:bg-red-400 hover:text-white flex items-center gap-5"><RiLogoutCircleLine/>Logout</div>
-                              </div>
+                              </div></Link>
                   </div>
 
                   </div>

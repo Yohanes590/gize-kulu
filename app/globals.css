@@ -118,13 +118,15 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-.active-class{
-  background: var(--blue-color);
-  color:white;
-}
 .hover-buttons{
   transition: all 400ms;
   color:var(--blue-color)
+}
+
+
+.active-class{
+  background: var(--blue-color);
+  color:white;
 }
 .hover-buttons:hover{
   background: var(--blue-color);
