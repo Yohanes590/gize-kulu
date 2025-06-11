@@ -1,7 +1,23 @@
 import Link from "next/link";
-
+import SignInOTP from "@/components/otp-component/sign-in-otp";
 export default function SignIN() {
       return (<>
+            <div className="sign-in-otp-container bg-[#000000a2] w-full h-screen flex fixed justify-center items-center z-40 backdrop-blur-2xl">
+
+                  <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[200px] w-[400px]">
+                        <div className="otp-compo">
+                              <h1>Check your email inbox <br/>
+                                    we've sent you an OTP.</h1>
+                              <div className="otp mt-[5px]">
+                        <SignInOTP/>
+                              </div>
+                              <button className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
+                        </div>
+                  </div>
+
+
+            </div>
+
             <div className="input-box-container w-full h-screen relative flex  justify-center items-center">
                   <div className="some-input-section w-[600px] h-[370px] rounded-[10px] shadow-[0_0_5px_#cfcfcf] bg-[white]">
 
