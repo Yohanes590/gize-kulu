@@ -30,7 +30,7 @@ export default function AddingTaskFunction() {
                         <div className="select-text-area">
                               <textarea className="w-[87%] mt-[20px] pl-[20px] pt-[20px] h-[300px] rounded-[10px] bg-[#f7f6f6]" placeholder="Description"/>
                         </div>
-                        <div className="buttons mt-[20px] flex gap-5">
+                        <div className="buttons mt-[20px] flex-wrap flex gap-5">
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Task</button>
                         </div>
