@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 
 body {
-  font-family: "Special Gothic", sans-serif;
-  font-weight: 400;
-  overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 

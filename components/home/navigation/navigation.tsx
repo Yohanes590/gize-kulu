@@ -12,7 +12,7 @@ export default function Navigation() {
                   </div>
                   <div className="buttons flex gap-5">
                         <button className="bg-[#242424] cursor-pointer w-[100px] h-[40px] text-white rounded-[8px]">Sign Up</button>
-                        <button className="bg-[#dddddd] cursor-pointer w-[100px] h-[40px] text-black rounded-[8px]">Sign In</button>
+                        <button className="bg-[#faf8f8] cursor-pointer w-[100px] h-[40px] text-black rounded-[8px]">Sign In</button>
                   </div>
             </div>
       </>

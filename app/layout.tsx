@@ -1,4 +1,8 @@
 import "./globals.css";
+import Head from "next/head";
+
+ 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -6,10 +10,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
+      <Head>
         <link rel="ico" href="/icon.png" />
         <meta name="description" content="Manage your time wisely with Gize Kulu" />
-      </head>
+      </Head>
       <body cz-shortcut-listen="true">
         {children}
       </body>
