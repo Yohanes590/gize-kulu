@@ -11,7 +11,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="ico" href="/icon.png" />
         <meta name="description" content="Manage your time wisely with Gize Kulu" />
       </Head>
       <body cz-shortcut-listen="true">
