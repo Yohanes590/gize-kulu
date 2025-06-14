@@ -1,7 +1,7 @@
 import Image from "next/image"
 export default function LandingPage() {
       return <>
-            <div className="home-page-container w-full flex justify-around items-center h-[800px]">
+            <div className="home-page-container flex-wrap w-full flex justify-around items-center h-[800px]">
 
                   <div className="page-title w-[600px]">
                         <h1 className="text-[black] font-bold font-weight text-[45px]">Your Personal Time Assistance </h1>
