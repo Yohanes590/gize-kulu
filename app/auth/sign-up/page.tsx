@@ -2,10 +2,21 @@
 import Link from "next/link";
 import SignInOTP from "@/components/otp-component/sign-in-otp";
 export default function SignUp() {
-            const signUpFunction = () => {
-            const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
-            OtpElement.classList.remove("hidden")
-            OtpElement.classList.add("flex")
+      const signUpFunction = async():Promise<void> => {
+                  
+            const SendData = await fetch("/api/authentication/sign-up", {
+                  method: "post",
+                  headers: {
+                        "Content-Type":"application/json"
+                  },
+                  body:JSON.stringify({message:"connected!"})
+            })
+            const ServerRespond = await SendData.json()
+            console.log(ServerRespond)
+
+            // const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
+            // OtpElement.classList.remove("hidden")
+            // OtpElement.classList.add("flex")
       }
       return (<>
             

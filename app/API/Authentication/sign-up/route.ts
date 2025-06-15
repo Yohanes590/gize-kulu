@@ -1,5 +1,4 @@
 export async function POST(UserInfo:Request) {
-      return Response.json({
-            message:"Connected Backend"
-      })
+      const ClientData =await UserInfo.json()
+      return Response.json(ClientData)
 }
