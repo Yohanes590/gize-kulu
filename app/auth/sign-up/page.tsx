@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import SignInOTP from "@/components/otp-component/sign-in-otp";
+import { HashLoader  } from "react-spinners";
 import { useState } from "react";
 export default function SignUp() {
                   const  [ DisableButton , setBoolean ] = useState<boolean>(false)
@@ -11,7 +12,8 @@ export default function SignUp() {
             const password = document.getElementById("password") as HTMLInputElement;
             const confirm_password = document.getElementById("confirm-password") as HTMLInputElement;
             const Error_display = document.getElementById("error-display") as HTMLElement;
-            const SubmitButton = document.getElementById("submit-button") as HTMLElement;
+                        const SubmitButton = document.getElementById("submit-button") as HTMLElement;
+                        const buttonLoading = document.querySelector(".loading") as HTMLElement
             const Empty = ""
 
             if (fullName.value === Empty) {
@@ -31,7 +33,9 @@ export default function SignUp() {
             } else {
                   setBoolean(true)
                   Error_display.innerText = ``
-                  SubmitButton.style.background="#1a4c99"
+                  SubmitButton.style.background = "#1a4c99"
+                  buttonLoading.classList.add("flex")
+                  buttonLoading.classList.remove("hidden")
                   SubmitButton.style.cursor="progress"
                   const SendData = await fetch("/API/Authentication/sign-up", {
                         method: "post",
@@ -41,7 +45,9 @@ export default function SignUp() {
                         body:JSON.stringify({message:"connected!"})
                   })
                   setBoolean(false)
-                  SubmitButton.style.background="#2B7FFF"
+                  SubmitButton.style.background = "#2B7FFF"
+                  buttonLoading.classList.add("hidden")
+                  buttonLoading.classList.remove("flex")
                   SubmitButton.style.cursor="pointer"
                   const ServerRespond = await SendData.json()
                   console.log(ServerRespond)
@@ -83,7 +89,10 @@ export default function SignUp() {
                               <input id="email" type="email" placeholder="*Email" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <input id="password" type="password" placeholder="*Password" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <input id="confirm-password" type="password" placeholder="*Confirm" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
-                              <button disabled={DisableButton} id="submit-button" className="mt-[10px] w-[95%] h-[45px] cursor-pointer bg-blue-500 text-white rounded-[10px]" onClick={signUpFunction}>Sign Up</button>
+                              <button disabled={DisableButton} id="submit-button" className="mt-[10px] w-[95%] flex gap-2 items-center justify-center h-[45px] cursor-pointer bg-blue-500 text-white rounded-[10px]" onClick={signUpFunction}>
+                                    Sign Up
+                                  <div className="loading hidden"> <HashLoader size={20} color="#ffffff" /></div> 
+                              </button>
                               <div className="small-message mt-[20px]">
                                     <p className="text-[#6e6e6e]">Already I have account <Link className="text-blue-500" href="/auth/sign-in">Sign In</Link></p>
                               </div>
