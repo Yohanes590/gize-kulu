@@ -4,6 +4,17 @@ import SignInOTP from "@/components/otp-component/sign-in-otp";
 export default function SignUp() {
       const signUpFunction = async():Promise<void> => {
                   
+
+            const fullName = document.getElementById("full-name") as HTMLInputElement;
+            const email = document.getElementById("email") as HTMLInputElement;
+            const password = document.getElementById("password") as HTMLInputElement;
+            const confirm_password = document.getElementById("confirm-password") as HTMLInputElement;
+            const Empty = ""
+
+            if (fullName.value === Empty) {
+                  
+            }
+
             const SendData = await fetch("/API/Authentication/sign-up", {
                   method: "post",
                   headers: {
@@ -40,6 +51,7 @@ export default function SignUp() {
                         <div className="box-header-section pt-[30px] pl-[20px]">
                               <h1 className="font-bold text-[25px]">Sign Up </h1>
                               <p className="text-[#a0a0a0]">register new account and manage your time!</p>
+                              <p id="error-display" className="text-red-400 mt-[5px]"></p>
                         </div>
 
                         <div className="input-section-user pl-[20px] mt-[20px]">
@@ -48,7 +60,7 @@ export default function SignUp() {
                               <input type="password" placeholder="*Password" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <input type="password" placeholder="*Confirm" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <button className="mt-[10px] w-[95%] h-[45px] cursor-pointer bg-blue-500 text-white rounded-[10px]" onClick={signUpFunction}>Sign Up</button>
-                              <div className="small-message mt-[30px]">
+                              <div className="small-message mt-[20px]">
                                     <p className="text-[#6e6e6e]">Already I have account <Link className="text-blue-500" href="/auth/sign-in">Sign In</Link></p>
                               </div>
                               </div>
