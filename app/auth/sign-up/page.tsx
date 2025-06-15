@@ -16,16 +16,18 @@ export default function SignUp() {
                   Error_display.innerText=`Full name required!`
             } else if (email.value === Empty) {
                   Error_display.innerText=`Email required!`
-            }  else if (password.value === Empty) {
+            }  else if (!email.value.includes('@')) {
+                  Error_display.innerText=`Invalid Email!`
+            }else if (password.value === Empty) {
                   Error_display.innerText=`Password required!`
-            } 
-            else if (confirm_password.value === Empty) {
-                  Error_display.innerText=`Confirm password required!`
-            } else if (confirm_password.value.length < 8) {
+            }else if (password.value.length < 8) {
                   Error_display.innerText=`Min 8 character allowed`
+            }  else if (confirm_password.value === Empty) {
+                  Error_display.innerText=`Confirm password required!`
             }  else if (confirm_password.value != password.value) {
                   Error_display.innerText=`Password Not mach`
             } else {
+                  Error_display.innerText=``
                   const SendData = await fetch("/API/Authentication/sign-up", {
                         method: "post",
                         headers: {
@@ -69,10 +71,10 @@ export default function SignUp() {
                         </div>
 
                         <div className="input-section-user pl-[20px] mt-[20px]">
-                             <input type="text" placeholder="*Full Name" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px]" />
-                              <input type="email" placeholder="*Email" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
-                              <input type="password" placeholder="*Password" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
-                              <input type="password" placeholder="*Confirm" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
+                              <input id="full-name" type="text" placeholder="*Full Name" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px]" />
+                              <input id="email" type="email" placeholder="*Email" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
+                              <input id="password" type="password" placeholder="*Password" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
+                              <input id="confirm-password" type="password" placeholder="*Confirm" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <button className="mt-[10px] w-[95%] h-[45px] cursor-pointer bg-blue-500 text-white rounded-[10px]" onClick={signUpFunction}>Sign Up</button>
                               <div className="small-message mt-[20px]">
                                     <p className="text-[#6e6e6e]">Already I have account <Link className="text-blue-500" href="/auth/sign-in">Sign In</Link></p>
