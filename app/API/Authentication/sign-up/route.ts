@@ -1,3 +1,5 @@
-export async function POST() {
-      return
+export async function POST(UserInfo:Request) {
+      return Response.json({
+            message:"Connected Backend"
+      })
 }
