@@ -9,11 +9,12 @@ export default function SignUp() {
             const email = document.getElementById("email") as HTMLInputElement;
             const password = document.getElementById("password") as HTMLInputElement;
             const confirm_password = document.getElementById("confirm-password") as HTMLInputElement;
+            const Error_display = document.getElementById("error-display") as HTMLElement;
             const Empty = ""
 
             if (fullName.value === Empty) {
-                  
-            }
+                  Error_display.innerText=`Full name required!`
+            } 
 
             const SendData = await fetch("/API/Authentication/sign-up", {
                   method: "post",
