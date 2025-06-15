@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import SignInOTP from "@/components/otp-component/sign-in-otp";
-import { HashLoader  } from "react-spinners";
+import { PuffLoader   } from "react-spinners";
 import { useState } from "react";
 export default function SignUp() {
                   const  [ DisableButton , setBoolean ] = useState<boolean>(false)
@@ -91,7 +91,7 @@ export default function SignUp() {
                               <input id="confirm-password" type="password" placeholder="*Confirm" className="w-[95%] outline-1 outline-blue-400 h-[45px] pl-[20px] bg-[#f0f5ff] rounded-[10px] mt-[10px]" />
                               <button disabled={DisableButton} id="submit-button" className="mt-[10px] w-[95%] flex gap-2 items-center justify-center h-[45px] cursor-pointer bg-blue-500 text-white rounded-[10px]" onClick={signUpFunction}>
                                     Sign Up
-                                  <div className="loading hidden"> <HashLoader size={20} color="#ffffff" /></div> 
+                                  <div className="loading hidden"> <PuffLoader size={20} color="#ffffff" /></div> 
                               </button>
                               <div className="small-message mt-[20px]">
                                     <p className="text-[#6e6e6e]">Already I have account <Link className="text-blue-500" href="/auth/sign-in">Sign In</Link></p>
