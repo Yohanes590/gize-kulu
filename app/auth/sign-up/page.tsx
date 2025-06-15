@@ -14,17 +14,30 @@ export default function SignUp() {
 
             if (fullName.value === Empty) {
                   Error_display.innerText=`Full name required!`
+            } else if (email.value === Empty) {
+                  Error_display.innerText=`Email required!`
+            }  else if (password.value === Empty) {
+                  Error_display.innerText=`Password required!`
             } 
+            else if (confirm_password.value === Empty) {
+                  Error_display.innerText=`Confirm password required!`
+            } else if (confirm_password.value.length < 8) {
+                  Error_display.innerText=`Min 8 character allowed`
+            }  else if (confirm_password.value != password.value) {
+                  Error_display.innerText=`Password Not mach`
+            } else {
+                  const SendData = await fetch("/API/Authentication/sign-up", {
+                        method: "post",
+                        headers: {
+                              "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify({message:"connected!"})
+                  })
+                  const ServerRespond = await SendData.json()
+                  console.log(ServerRespond)
+            }
 
-            const SendData = await fetch("/API/Authentication/sign-up", {
-                  method: "post",
-                  headers: {
-                        "Content-Type":"application/json"
-                  },
-                  body:JSON.stringify({message:"connected!"})
-            })
-            const ServerRespond = await SendData.json()
-            console.log(ServerRespond)
+           
 
             // const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
             // OtpElement.classList.remove("hidden")
