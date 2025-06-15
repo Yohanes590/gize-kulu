@@ -4,7 +4,7 @@ import SignInOTP from "@/components/otp-component/sign-in-otp";
 export default function SignUp() {
       const signUpFunction = async():Promise<void> => {
                   
-            const SendData = await fetch("/api/authentication/sign-up", {
+            const SendData = await fetch("/API/Authentication/sign-up", {
                   method: "post",
                   headers: {
                         "Content-Type":"application/json"
