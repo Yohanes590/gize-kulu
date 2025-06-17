@@ -1,0 +1,20 @@
+.navigation-bar a{
+      transition: all 500ms;
+      position: relative;
+}
+
+.navigation-bar a::before{
+      content: "";
+      width: 0%;
+      position: absolute;
+      border:0px solid #616EFF;
+      border-radius: 10px;
+      bottom: -2px;
+      transition: all 500ms;
+}
+
+
+.navigation-bar a:hover::before{
+      width: 100%;
+      border:1px solid #616EFF;
+}

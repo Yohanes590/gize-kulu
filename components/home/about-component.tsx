@@ -24,7 +24,7 @@ export default function AboutPage() {
                                     and boosts daily productivity.</p>
                               </div>
                               <div className="card-buttons mt-[15px] pl-[1px] flex items-center justify-between">
-                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF]">Try now</button>
+                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF] hover:bg-[#4b56ce] transition-all duration-500">Try now</button>
                                     <div className="card-icon w-[50px] h-[50px] flex justify-center items-center text-green-400 rounded-[10px] mr-[40px] bg-green-200">
                                           <HiOutlineAdjustments size={25}/>
                                     </div>
@@ -38,7 +38,7 @@ export default function AboutPage() {
                                           This reflects real-world security practices in modern web apps.</p>
                               </div>
                               <div className="card-buttons mt-[15px] pl-[1px] flex items-center justify-between">
-                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF]">Try now</button>
+                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF] hover:bg-[#4b56ce] transition-all duration-500">Try now</button>
                                     <div className="card-icon w-[50px] h-[50px] flex justify-center items-center text-red-400 rounded-[10px] mr-[40px] bg-red-200">
                                           <FiLock size={25}/>
                                     </div>
@@ -50,7 +50,7 @@ export default function AboutPage() {
                                     <p className="text-[#858585] pt-[5px]">Gize Kulu includes a clean dashboard with charts and task stats. Users can visualize progress and analyze productivity trends, turning basic task tracking into an insightful user experience</p>
                               </div>
                               <div className="card-buttons mt-[15px] pl-[1px] flex items-center justify-between">
-                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF]">Try now</button>
+                                    <button className="w-[150px] h-[40px] cursor-pointer text-[white] rounded-[10px] bg-[#616EFF] hover:bg-[#4b56ce] transition-all duration-500">Try now</button>
                                     <div className="card-icon w-[50px] h-[50px] flex justify-center items-center text-orange-400 rounded-[10px] mr-[40px] bg-orange-200">
                                           <MdDashboardCustomize size={25}/>
                                     </div>
