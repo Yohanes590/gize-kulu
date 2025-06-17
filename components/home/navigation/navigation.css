@@ -1,6 +1,11 @@
 .navigation-bar a{
       transition: all 500ms;
       position: relative;
+      transition: all 500ms;
+}
+
+.navigation-bar a:hover{
+      color: #616EFF;
 }
 
 .navigation-bar a::before{
@@ -11,6 +16,8 @@
       border-radius: 10px;
       bottom: -2px;
       transition: all 500ms;
+      transform: translate(50%);
+      right: 50%;
 }
 
 
