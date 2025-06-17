@@ -12,7 +12,7 @@ export default function Navigation() {
                         <Link href="/">Contact</Link>
                   </div>
                   <div className="buttons flex gap-5">
-                        <button className="bg-[#242424] cursor-pointer w-[100px] h-[40px] text-white rounded-[8px]">Sign Up</button>
+                        <button className="bg-[#242424] cursor-pointer w-[100px] h-[40px] text-white hover:bg-[#383838] transition-all duration-500 rounded-[8px]">Sign Up</button>
                         <button className="bg-[#faf8f8] cursor-pointer w-[100px] h-[40px] text-black rounded-[8px]">Sign In</button>
                   </div>
             </div>

@@ -8,8 +8,8 @@ export default function LandingPage() {
                         <p className="text-[#858585] text-[18px]">Organize your projects, tasks, and goals in one place. 
                               Stay focused and achieve more with your personal command center.</p>
                         <div className="flex-button flex items-center gap-5">
-                        <button className="mt-[10px] text-[white] rounded-[5px] cursor-pointer bg-[#0382f8] w-[150px] h-[45px]">Start to day</button>
-                         <button className="mt-[10px] text-[white] rounded-[5px] cursor-pointer bg-[#040f1f] w-[250px] h-[45px]">View work space</button>
+                        <button className="mt-[10px] text-[white] rounded-[5px] cursor-pointer bg-[#0382f8] hover:bg-[#416fac] transition-all duration-500 w-[150px] h-[45px]">Start to day</button>
+                         <button className="mt-[10px] text-[white] rounded-[5px] cursor-pointer bg-[#040f1f] hover:bg-[#383838] transition-all duration-500 w-[250px] h-[45px]">View work space</button>
                         </div>
                   </div>
 
