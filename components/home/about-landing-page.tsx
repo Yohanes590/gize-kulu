@@ -1,6 +1,10 @@
+import Image from "next/image"
 export default function PicAbout() {
       return <>
-      
-            About
+            <div className="h-screen flex justify-center items-center">
+                  
+                  <Image src="/about-pic-cover.png" width={1000} height={100} alt="about picture dashboard" className="w-[80%]"/>
+
+           </div>
       </>
 }
