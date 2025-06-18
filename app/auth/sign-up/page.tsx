@@ -81,7 +81,7 @@ export default function SignUp() {
                         <div className="box-header-section pt-[30px] pl-[20px]">
                               <h1 className="font-bold text-[25px]">Sign Up </h1>
                               <p className="text-[#a0a0a0]">register new account and manage your time!</p>
-                              <p id="error-display" className="text-red-400 mt-[5px]"></p>
+                              <p id="error-display" className="text-red-400 mt-[10px]"></p>
                         </div>
 
                         <div className="input-section-user pl-[20px] mt-[20px]">
