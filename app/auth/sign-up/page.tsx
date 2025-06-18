@@ -14,8 +14,12 @@ export default function SignUp() {
             const Error_display = document.getElementById("error-display") as HTMLElement;
                         const SubmitButton = document.getElementById("submit-button") as HTMLElement;
                         const buttonLoading = document.querySelector(".loading") as HTMLElement
-            const Empty = ""
-
+                         const Empty = ""
+                        const userInformation = {
+                              user_name: fullName.value,
+                              user_email: email.value,
+                              user_password: password.value
+                         }
             if (fullName.value === Empty) {
                   Error_display.innerText=`Full name required!`
             } else if (email.value === Empty) {
@@ -42,7 +46,7 @@ export default function SignUp() {
                         headers: {
                               "Content-Type":"application/json"
                         },
-                        body:JSON.stringify({message:"connected!"})
+                        body:JSON.stringify(userInformation)
                   })
                   setBoolean(false)
                   SubmitButton.style.background = "#2B7FFF"
