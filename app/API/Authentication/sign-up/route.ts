@@ -4,15 +4,18 @@ export async function POST(UserInfo: Request) {
       if (ClientData.length > 3) {
             return Response.json({message:"client error please input field properly"})
       } else {
+           try {
             const CreateUser = await prisma.user.create({
                   data: {
-                        username: ClientData.user_name,
+                        user_name: ClientData.user_name,
                         user_email: ClientData.user_email,
                         user_password: ClientData.user_password,
                         user_task: []
                   }
             }) 
-      return Response.json(CreateUser)
+            return Response.json(CreateUser)
+           } catch (error:any) {
+            return Response.json({message:error.message})
+           }
 }
-  
 }
