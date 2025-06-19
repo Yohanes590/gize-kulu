@@ -28,9 +28,9 @@ export async function POST(UserInfo: Request) {
                         user_task: [],
                   }
             }) 
-            return Response.json({accessToken:userToken})
+            return Response.json({accessToken:userToken, status:200})
            } catch (error:any) {
-            return Response.json({message:error.message})
+            return Response.json({message:error.message , status:500})
            }
 }
 }

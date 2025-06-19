@@ -3,6 +3,8 @@ import Link from "next/link";
 import SignInOTP from "@/components/otp-component/sign-in-otp";
 import { PuffLoader   } from "react-spinners";
 import { useState } from "react";
+import Cookie from 'js-cookie'
+import { Toaster , toast } from 'react-hot-toast'
 export default function SignUp() {
                   const  [ DisableButton , setBoolean ] = useState<boolean>(false)
                   const signUpFunction = async():Promise<void> => {
@@ -54,17 +56,25 @@ export default function SignUp() {
                   buttonLoading.classList.remove("flex")
                   SubmitButton.style.cursor="pointer"
                   const ServerRespond = await SendData.json()
-                  console.log(ServerRespond)
+                  if (ServerRespond.status == 200) {
+                        toast.success("Success Created Account")
+                        Cookie.set("access-token" , ServerRespond.accessToken)
+                  } else {
+                        const serverSplit = ServerRespond.message.split(":")
+                        if (serverSplit[4] == " `User_user_email_key`") {
+                              toast.error("Email Already Taken")
+                        } else {
+                              toast.error("Server Error!")
+                        }
+                  }
+
             }
-
-           
-
             // const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
             // OtpElement.classList.remove("hidden")
             // OtpElement.classList.add("flex")
       }
       return (<>
-            
+            <Toaster/>
            <div className="sign-in-otp-container bg-[#000000a2] w-full h-screen hidden fixed justify-center items-center z-40 backdrop-blur-2xl">
 
                   <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[200px] w-[400px]">
