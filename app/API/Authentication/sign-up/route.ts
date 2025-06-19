@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma"
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 export async function POST(UserInfo: Request) {
       const ClientData = await UserInfo.json()
       if (ClientData.length > 3) {
@@ -16,17 +17,19 @@ export async function POST(UserInfo: Request) {
                   if (!access_key) {
                         return Response.json({message:"Invalid Secrete Key"})
                   }
+                  const genSalt =await bcrypt.genSalt(10)
+                  const HashedPassword =await bcrypt.hash(ClientData.user_password,genSalt)
                   const userToken = jwt.sign(TokenInfo,access_key)
                   const CreateUser = await prisma.user.create({
                   data: {
                         user_name: ClientData.user_name,
                         user_email: ClientData.user_email,
-                        user_password: ClientData.user_password,
+                        user_password: HashedPassword,
                         user_task: [],
                         user_token:userToken,
                   }
             }) 
-            return Response.json(CreateUser)
+            return Response.json({accessToken:CreateUser})
            } catch (error:any) {
             return Response.json({message:error.message})
            }
