@@ -29,7 +29,7 @@ export async function POST(UserInfo: Request) {
                         user_token:userToken,
                   }
             }) 
-            return Response.json({accessToken:CreateUser})
+            return Response.json({accessToken:userToken})
            } catch (error:any) {
             return Response.json({message:error.message})
            }
