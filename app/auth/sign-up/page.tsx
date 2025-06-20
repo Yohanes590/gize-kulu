@@ -37,6 +37,7 @@ export default function SignUp() {
             }  else if (confirm_password.value != password.value) {
                   Error_display.innerText=`Password Not mach`
             } else {
+                  const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
                   setBoolean(true)
                   Error_display.innerText = ``
                   SubmitButton.style.background = "#1a4c99"
@@ -58,6 +59,8 @@ export default function SignUp() {
                   const ServerRespond = await SendData.json()
                   if (ServerRespond.status == 200) {
                         toast.success("Success Created Account")
+                        OtpElement.classList.remove("hidden")
+                        OtpElement.classList.add("flex")
                         Cookie.set("access-token" , ServerRespond.accessToken)
                   } else {
                         const serverSplit = ServerRespond.message.split(":")
@@ -69,9 +72,7 @@ export default function SignUp() {
                   }
 
             }
-            // const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
-            // OtpElement.classList.remove("hidden")
-            // OtpElement.classList.add("flex")
+
       }
       return (<>
             <Toaster/>
