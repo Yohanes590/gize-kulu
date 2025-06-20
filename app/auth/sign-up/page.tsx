@@ -74,6 +74,7 @@ export default function SignUp() {
             }
 
       }
+      const [otp , setOtp] = useState<number>()
       const verifyFunction = async() => {
             const Token = Cookie.get("access-token")
             const ServerRespond = await fetch('/API/Authentication/otp', {
@@ -102,7 +103,7 @@ export default function SignUp() {
                               <h1>Check your email inbox <br/>
                                     we've sent you an OTP.</h1>
                               <div className="otp mt-[5px]">
-                        <SignInOTP/>
+                        <SignInOTP value={otp} onChange={setOtp}/>
                               </div>
                               <button className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
                              <br/><br/> <label onClick={verifyFunction} className="cursor-pointer text-center">Send Otp </label>
