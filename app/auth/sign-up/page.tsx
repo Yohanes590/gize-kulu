@@ -74,8 +74,9 @@ export default function SignUp() {
             }
 
       }
-      const [otp , setOtp] = useState<number>()
-      const verifyFunction = async() => {
+      const [otp , setOtp] = useState<string>('')
+      const verifyFunction = async (e: React.FormEvent) => {
+            e.preventDefault();
             const Token = Cookie.get("access-token")
             const ServerRespond = await fetch('/API/Authentication/otp', {
                   method: "post",
@@ -83,7 +84,8 @@ export default function SignUp() {
                         "Content-Type":"application/json"
                   },
                   body: JSON.stringify({
-                        user_token:Token
+                        user_token: Token,
+                        user_otp:otp
                   })
             })
             const ChangeResponse= await ServerRespond.json()
@@ -102,11 +104,13 @@ export default function SignUp() {
                         <div className="otp-compo">
                               <h1>Check your email inbox <br/>
                                     we've sent you an OTP.</h1>
+                                    <form onSubmit={verifyFunction}>
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOtp}/>
                               </div>
-                              <button className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
+                              <button type="submit" className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
                              <br/><br/> <label onClick={verifyFunction} className="cursor-pointer text-center">Send Otp </label>
+                             </form>
                         </div>
                   </div>
             </div>

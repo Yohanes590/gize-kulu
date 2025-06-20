@@ -20,7 +20,7 @@ export async function POST(userRequest: Request) {
                   setTimeout(() => {
                         OTP = null;
                   }, 500000);
-                  if (userOtp == "") {
+                  if (userOtp == 0) {
                         const transport = nodemailer.createTransport({
                               service: "Gmail",
                               auth: {
@@ -47,7 +47,7 @@ export async function POST(userRequest: Request) {
       
                   } else {
                         if (OTP != userOtp) {
-                              return Response.json({message:"invalid otp"})
+                              return Response.json({message:OTP})
                         } else {
                               const GettingUser = await prisma.user.update({
                                     where: { user_email: FetchEmail },

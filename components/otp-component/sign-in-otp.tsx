@@ -6,12 +6,12 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp"
 type signInProp = {
-  value: number,
-  onChange: (value: number) => void;
+  value: string,
+  onChange: (value: string) => void;
 }
 export default function SignInOTP({value , onChange}:signInProp) {
       return (<>
-          <InputOTP value="" maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+          <InputOTP value={value} onChange={onChange} maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />
