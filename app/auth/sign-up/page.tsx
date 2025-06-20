@@ -74,11 +74,30 @@ export default function SignUp() {
             }
 
       }
+      const verifyFunction = async() => {
+            const Token = Cookie.get("access-token")
+            const ServerRespond = await fetch('/API/Authentication/otp', {
+                  method: "post",
+                  headers: {
+                        "Content-Type":"application/json"
+                  },
+                  body: JSON.stringify({
+                        user_token:Token
+                  })
+            })
+            const ChangeResponse= await ServerRespond.json()
+            if(ServerRespond.status == 400){
+                  toast.error("Client Error!")
+            } else {
+                  toast.success("Check You Email Inbox!")
+                  console.log(ChangeResponse)
+            }
+      }
       return (<>
             <Toaster/>
            <div className="sign-in-otp-container bg-[#000000a2] w-full h-screen hidden fixed justify-center items-center z-40 backdrop-blur-2xl">
 
-                  <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[200px] w-[400px]">
+                  <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[250px] w-[400px]">
                         <div className="otp-compo">
                               <h1>Check your email inbox <br/>
                                     we've sent you an OTP.</h1>
@@ -86,6 +105,7 @@ export default function SignUp() {
                         <SignInOTP/>
                               </div>
                               <button className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
+                             <br/><br/> <label onClick={verifyFunction} className="cursor-pointer text-center">Send Otp </label>
                         </div>
                   </div>
             </div>
