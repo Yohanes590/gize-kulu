@@ -1,7 +1,6 @@
 import prisma from "@/lib/prisma"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import nodemailer from 'nodemailer'
 export async function POST(UserInfo: Request) {
       const ClientData = await UserInfo.json()
       if (ClientData.length > 3) {
@@ -30,33 +29,7 @@ export async function POST(UserInfo: Request) {
                         user_verify:false,
                   }
                   }) 
-                  let OTP;
-                  const transport = nodemailer.createTransport({
-                        service: "Gmail",
-                        auth: {
-                              user: process.env.EMAIL_PASS,
-                              pass:process.env.GOOGE_SECRET
-                        }
-                  })
-                   OTP = Math.floor(100000 + Math.random() * 900000)
-                  const mailOption = {
-                        from: process.env.EMAIL_PASS,
-                        to: ClientData.user_email,
-                        subject: "Your Verification Key From GIZE KULU APP",
-                        text: `
-                        <h1>Verification Key From Gize Kulu Team. </h1>
-                        <p>${OTP}</p>
-                        `
-                  }
-                  setTimeout(() => {
-                        OTP = null;
-                  }, 500000);
-                  try {
-                        await transport.sendMail(mailOption)
-                        return Response.json({message:"check your email inbox",accessToken:userToken ,status:200})
-                  } catch (error) {
-                        return Response.json({message:"something wen't error"})
-                  }
+                  return Response.json({message:"created success fully",accessToken:userToken ,status:200})
            } catch (error:any) {
             return Response.json({message:error.message , status:500})
            }
