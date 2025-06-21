@@ -4,7 +4,7 @@ import SignInOTP from "@/components/otp-component/sign-in-otp";
 import { PuffLoader   } from "react-spinners";
 import { useState } from "react";
 import Cookie from 'js-cookie'
-import { Toaster , toast } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 export default function SignUp() {
                   const  [ DisableButton , setBoolean ] = useState<boolean>(false)
                   const signUpFunction = async():Promise<void> => {
@@ -74,9 +74,11 @@ export default function SignUp() {
             }
 
       }
-      const [otp , setOtp] = useState<string>('')
-      const verifyFunction = async (e: React.FormEvent) => {
-            e.preventDefault();
+      const [otp, setOtp] = useState<string>('')
+      const [ disabledButton ,setButton ] = useState<boolean>(false)
+      const sendOTP = async () => {
+            setButton(true)
+            const otpLOADING = toast.loading("sending OTP ...")
             const Token = Cookie.get("access-token")
             const ServerRespond = await fetch('/API/Authentication/otp', {
                   method: "post",
@@ -85,15 +87,17 @@ export default function SignUp() {
                   },
                   body: JSON.stringify({
                         user_token: Token,
-                        user_otp:otp
+                        user_otp: otp,
                   })
             })
-            const ChangeResponse= await ServerRespond.json()
+            const ChangeResponse = await ServerRespond.json()
+            toast.dismiss(otpLOADING)
+            setButton(false)
             if(ServerRespond.status == 400){
                   toast.error("Client Error!")
             } else {
                   toast.success("Check You Email Inbox!")
-                  console.log(ChangeResponse)
+                  Cookie.set("OTP-TOKEN" ,ChangeResponse.otpToken)
             }
       }
       return (<>
@@ -104,12 +108,12 @@ export default function SignUp() {
                         <div className="otp-compo">
                               <h1>Check your email inbox <br/>
                                     we've sent you an OTP.</h1>
-                                    <form onSubmit={verifyFunction}>
+                                    <form >
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOtp}/>
                               </div>
                               <button type="submit" className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
-                             <br/><br/> <label onClick={verifyFunction} className="cursor-pointer text-center">Send Otp </label>
+                             <br/><br/> <button disabled={disabledButton} onClick={sendOTP} className=" cursor-pointer text-center">Send Otp </button>
                              </form>
                         </div>
                   </div>

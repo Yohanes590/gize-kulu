@@ -1,6 +1,6 @@
 import jwt ,{JwtPayload} from "jsonwebtoken"
-import prisma from "@/lib/prisma"
 import nodemailer from 'nodemailer'
+import bcrypt from "bcryptjs"
 export async function POST(userRequest: Request) {
       const userRequestBody = await userRequest.json()
       if (userRequestBody.length > 2) {
@@ -17,9 +17,6 @@ export async function POST(userRequest: Request) {
                   const FetchEmail = verify.userInfo.user_email
                   let OTP;
                   OTP = Math.floor(100000 + Math.random() * 900000)
-                  setTimeout(() => {
-                        OTP = null;
-                  }, 500000);
                   if (userOtp == 0) {
                         const transport = nodemailer.createTransport({
                               service: "Gmail",
@@ -37,34 +34,26 @@ export async function POST(userRequest: Request) {
                               <p>${OTP}</p>
                               `
                         }
-                  
+                        const sendOTP = await bcrypt.genSalt(10)
+                        const hashedOTP = await bcrypt.hash(`${OTP}`, sendOTP)
+                        const ENV_KEY = process.env.ACCESS_TOKEN
+                        if (!ENV_KEY) {
+                              return Response.json({message:"internal server error" , status:500})
+                        }
+                        const OTP_TOKEN = jwt.sign({otpToken:hashedOTP},ENV_KEY,{expiresIn:"5m"})
                         try {
                               await transport.sendMail(mailOption)
-                              return Response.json({message:"send success fully",status:200})
+                              return Response.json({message:"send success fully",status:200,otpToken:OTP_TOKEN})
                         } catch (error) {
                               return Response.json({message:"something wen't error",status:500})
                         }
       
-                  } else {
-                        if (OTP != userOtp) {
-                              return Response.json({message:OTP})
-                        } else {
-                              const GettingUser = await prisma.user.update({
-                                    where: { user_email: FetchEmail },
-                                    data: {
-                                          user_verify:true
-                                    }
-                              })
-                              if (!GettingUser) {
-                                    return Response.json({message:"invalid secrete key",status:400})   
-                              }
-                              return Response.json({message:"verified success fully",status:200})
-                        }
-                  }
+                  } 
    
             } catch (error:any) {
                   return Response.json({message: error.message})   
             }
   
       }
+     // return Response.json({message:"connected"})
 }
