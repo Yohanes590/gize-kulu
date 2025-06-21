@@ -101,6 +101,7 @@ export default function SignUp() {
             }
       }
       const verifyOTP = async () => {
+            const verifiedLoading = toast.loading("authenticating....")
             const OTP_TOKEN = Cookie.get("OTP-TOKEN")
             const User_Token = Cookie.get("access-token")
             const Send_OTP = await fetch("/API/Authentication/checkotp", {
@@ -114,7 +115,8 @@ export default function SignUp() {
                         user_token:User_Token
                   })
             })
-      const serverResponse = await Send_OTP.json()
+            const serverResponse = await Send_OTP.json()
+            toast.dismiss(verifiedLoading)
             console.log(serverResponse)
             if (serverResponse.status === 200) {
                   toast.success(serverResponse.message)
