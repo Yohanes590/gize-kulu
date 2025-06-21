@@ -15,6 +15,7 @@ export async function POST(userRequest: Request) {
             try {
                   const verify = jwt.verify(UserToken, verifyKey) as JwtPayload
                   const FetchEmail = verify.userInfo.user_email
+                  const FetchUserName = verify.userInfo.user_name
                   let OTP;
                   OTP = Math.floor(100000 + Math.random() * 900000)
                   if (userOtp == 0) {
@@ -30,7 +31,8 @@ export async function POST(userRequest: Request) {
                               to: FetchEmail,
                               subject: "Your Verification Key From GIZE KULU APP",
                               html: `
-                              <h1>Verification Key From Gize Kulu Team. Don't share for any body ! </h1>
+                              <h2>Hi ${FetchUserName} 👋 </h2>
+                              <h3>Verification key from the Gize Kulu team. Do not share it with anyone! </h3>
                               <p>${OTP}</p>
                               `
                         }

@@ -110,12 +110,18 @@ export default function SignUp() {
                   },
                   body: JSON.stringify({
                         otp_token: OTP_TOKEN,
-                        user_otp: otp,
+                        user_otp: `${otp}`,
                         user_token:User_Token
                   })
             })
-            const serverResponse = await Send_OTP.json()
-      console.log(serverResponse)
+      const serverResponse = await Send_OTP.json()
+            console.log(serverResponse)
+            if (serverResponse.status === 200) {
+                  toast.success(serverResponse.message)
+                  window.location.href="/dashboard"
+            } else if (serverResponse.status === 400) {
+                  toast.error(serverResponse.message)
+            }
       }
       return (<>
             <Toaster/>

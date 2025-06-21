@@ -21,6 +21,3 @@ model User {
   user_task     Json
   user_verify   Boolean
 }
-
-//zSpSucoRZxJ2MPoE
-// jplussince34

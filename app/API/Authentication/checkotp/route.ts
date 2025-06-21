@@ -17,7 +17,7 @@ export async function POST(userRequest: Request) {
             try {
             const verifiedOTP = jwt.verify(otp_token, JWT_KEY) as JwtPayload
                   const hashedPasskey = verifiedOTP.otpToken
-                  const checkOTP =await bcrypt.compare(hashedPasskey, user_otp)
+                  const checkOTP =await bcrypt.compare(user_otp,hashedPasskey )
                   if (!checkOTP) {
                       return  Response.json({message:"inCorrect otp" , status:400})
                   }
@@ -39,18 +39,3 @@ export async function POST(userRequest: Request) {
       }
       return Response.json(user_input)
 }
-
-            // if (OTP != userOtp) {
-            //       return Response.json({message:OTP})
-            // } else {
-            //       const GettingUser = await prisma.user.update({
-            //             where: { user_email: FetchEmail },
-            //             data: {
-            //                   user_verify:true
-            //             }
-            //       })
-            //       if (!GettingUser) {
-            //             return Response.json({message:"invalid secrete key",status:400})   
-            //       }
-            //       return Response.json({message:"verified success fully",status:200})
-            // }
