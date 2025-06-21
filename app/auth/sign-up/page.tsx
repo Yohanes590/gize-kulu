@@ -100,6 +100,23 @@ export default function SignUp() {
                   Cookie.set("OTP-TOKEN" ,ChangeResponse.otpToken)
             }
       }
+      const verifyOTP = async () => {
+            const OTP_TOKEN = Cookie.get("OTP-TOKEN")
+            const User_Token = Cookie.get("access-token")
+            const Send_OTP = await fetch("/API/Authentication/checkotp", {
+                  method: "post",
+                  headers: {
+                        "Content-Type":"application/json"
+                  },
+                  body: JSON.stringify({
+                        otp_token: OTP_TOKEN,
+                        user_otp: otp,
+                        user_token:User_Token
+                  })
+            })
+            const serverResponse = await Send_OTP.json()
+      console.log(serverResponse)
+      }
       return (<>
             <Toaster/>
            <div className="sign-in-otp-container bg-[#000000a2] w-full h-screen hidden fixed justify-center items-center z-40 backdrop-blur-2xl">
@@ -108,13 +125,11 @@ export default function SignUp() {
                         <div className="otp-compo">
                               <h1>Check your email inbox <br/>
                                     we've sent you an OTP.</h1>
-                                    <form >
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOtp}/>
                               </div>
-                              <button type="submit" className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
+                              <button onClick={verifyOTP} className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
                              <br/><br/> <button disabled={disabledButton} onClick={sendOTP} className=" cursor-pointer text-center">Send Otp </button>
-                             </form>
                         </div>
                   </div>
             </div>
