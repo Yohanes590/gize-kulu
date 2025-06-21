@@ -100,7 +100,11 @@ export default function SignUp() {
                   Cookie.set("OTP-TOKEN" ,ChangeResponse.otpToken)
             }
       }
+      const [ otpButton , setOTPButton ]= useState<boolean>(false)
       const verifyOTP = async () => {
+            const OTP_BUTTON = document.querySelector(".otp-button") as HTMLElement
+            setOTPButton(true)
+            OTP_BUTTON.style.cursor="no-drop"
             const verifiedLoading = toast.loading("authenticating....")
             const OTP_TOKEN = Cookie.get("OTP-TOKEN")
             const User_Token = Cookie.get("access-token")
@@ -116,6 +120,8 @@ export default function SignUp() {
                   })
             })
             const serverResponse = await Send_OTP.json()
+            setOTPButton(false)
+            OTP_BUTTON.style.cursor="pointer"
             toast.dismiss(verifiedLoading)
             console.log(serverResponse)
             if (serverResponse.status === 200) {
@@ -136,7 +142,7 @@ export default function SignUp() {
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOtp}/>
                               </div>
-                              <button onClick={verifyOTP} className="mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
+                              <button disabled={otpButton} onClick={verifyOTP} className="otp-button mt-[5px] h-[35px] w-[220px] bg-green-500 text-[white] cursor-pointer rounded-[10px]">Verify</button>
                              <br/><br/> <button disabled={disabledButton} onClick={sendOTP} className=" cursor-pointer text-center">Send Otp </button>
                         </div>
                   </div>

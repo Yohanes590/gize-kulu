@@ -32,7 +32,8 @@ export async function POST(userRequest: Request) {
                               subject: "Your Verification Key From GIZE KULU APP",
                               html: `
                               <h2>Hi ${FetchUserName} 👋 </h2>
-                              <h3>Verification key from the Gize Kulu team. Do not share it with anyone! </h3>
+                              <h3>Verification key from the Gize Kulu team. Do not share it with anyone!  </h3>
+                              <h4>This OTP Expires After 5 MIN</h4>
                               <p>${OTP}</p>
                               `
                         }
