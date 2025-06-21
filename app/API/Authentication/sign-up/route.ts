@@ -19,7 +19,7 @@ export async function POST(UserInfo: Request) {
                   }
                   const genSalt =await bcrypt.genSalt(10)
                   const HashedPassword =await bcrypt.hash(ClientData.user_password,genSalt)
-                  const userToken = jwt.sign(TokenInfo,access_key)
+                  const userToken = jwt.sign(TokenInfo,access_key,{expiresIn:"7d"})
                   await prisma.user.create({
                   data: {
                         user_name: ClientData.user_name,

@@ -49,6 +49,7 @@ export default function SignIN() {
                   SubmitButton.style.cursor="pointer"
                   if (serverResponse.status == 200) {
                         toast.success(serverResponse.message)
+                        Cookie.remove("OTP-TOKEN")
                         Cookie.set("access-token", serverResponse.accessToken)
                         window.location.href="/dashboard"
                   } else if (serverResponse.status == 404) {

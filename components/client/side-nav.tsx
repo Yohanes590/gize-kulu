@@ -7,8 +7,47 @@ import { FaDiagramProject } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import Link from "next/link";
 import { CgMenuRightAlt } from "react-icons/cg";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
+import LoadingBlur from "../loading-blur";
+import Cookies from "js-cookie"
+import {toast , Toaster} from "react-hot-toast";
 export default function SideNavBar() {
+      const UserCookie = Cookies.get("access-token")
+      useEffect(() => {
+            const loading_component = document.querySelector(".loading_blur") as HTMLElement
+            const userNameDisplay = document.getElementById("user-name") as HTMLElement
+            const userEmailDisplay = document.getElementById("user-email") as HTMLElement
+            const userAvater = document.querySelector(".user-profile-letter") as HTMLElement
+            if (!UserCookie) {
+                     window.location.href="/"  
+            } else {
+                  const checkUser = async () => {
+                        const sendUserInfo = await fetch("/API/Authentication/check-user", {
+                              method: "post",
+                              headers: {
+                                    "Content-Type":"application/json"
+                              },
+                              body: JSON.stringify({
+                                    user_token:UserCookie
+                              })
+                        })
+                              const serverResponse = await sendUserInfo.json()
+                              if (serverResponse.status == 200) {
+                                    loading_component.style.display = "none"
+                                    const userName=  serverResponse.basicInfo[0].user_name
+                                    const userEmail = serverResponse.basicInfo[0].user_email
+                                    userAvater.innerText=userName.charAt(0)
+                                    userNameDisplay.innerText = userName
+                                    userEmailDisplay.innerText = userEmail
+                              } else {
+                                    toast.error("cant login!")
+                                    window.location.href="/"
+                              }
+                  }
+            checkUser()
+                 }
+      },[])
+
 
       useEffect(() => {
          function CheckRouterPath() {
@@ -62,6 +101,9 @@ export default function SideNavBar() {
             }
       }
       return (<>
+            <Toaster/>
+            <LoadingBlur/>
+            
             <div className="side-nav-container transition-all duration-700 bg-white w-[350px] h-[100%] fixed cursor-default z-40 shadow-[0_0_5px_#bfbfbf]">
                   <div className="sub-container pt-[50px] ">
                         
@@ -92,14 +134,12 @@ export default function SideNavBar() {
 
                   </div>
             </div>
-            <div onClick={OpenSliderFunction} className="user-profile-letter right-20 w-[40px] h-[40px] flex bg-violet-500 font-bold text-white rounded-[50%] cursor-pointer justify-center items-center fixed z-40 mt-[30px]">
-                        Y
-            </div>
+            <div onClick={OpenSliderFunction} className="user-profile-letter right-20 w-[40px] h-[40px] flex bg-[var(--blue-color)] font-bold text-white rounded-[50%] cursor-pointer justify-center items-center fixed z-40 mt-[30px]">  </div>
             <div className="user-profile-show transition-all duration-600 cursor-default fixed shadow-[0_0_5px_#cacaca] right-3 rounded-[10px] mt-[80px] bg-[white] w-[auto] pl-[20px] pr-[20px] h-[0px] overflow-hidden">
-                  <div className="h-[40px] text-[var(--blue-color)]">Yohanes Mulugeta</div>
-                  <div className="h-[40px] text-[var(--blue-color)]">jplussince34@gmail.com</div>
+                  <div id='user-name' className="h-[40px] text-[var(--blue-color)]"></div>
+                  <div id="user-email" className="h-[40px] text-[var(--blue-color)]"></div>
             </div>
-            <div onClick={OpenMainBar} className="hidden-menu-icon hidden fixed rounded-[50%] right-[20px] z-40 mt-[20px] h-[50px] w-[50px]  justify-center items-center bg-violet-500 text-white">
+            <div onClick={OpenMainBar} className="hidden-menu-icon hidden fixed rounded-[50%] right-[20px] z-40 mt-[20px] h-[50px] w-[50px]  justify-center items-center bg-[var(--blue-color)] text-white">
                   <CgMenuRightAlt size={30}/>
             </div>
       </>)

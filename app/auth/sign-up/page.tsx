@@ -59,6 +59,7 @@ export default function SignUp() {
                   const ServerRespond = await SendData.json()
                   if (ServerRespond.status == 200) {
                         toast.success("Success Created Account")
+                        Cookie.remove("OTP-TOKEN")
                         OtpElement.classList.remove("hidden")
                         OtpElement.classList.add("flex")
                         Cookie.set("access-token" , ServerRespond.accessToken)

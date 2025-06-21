@@ -29,7 +29,7 @@ export async function POST(userRequest: Request) {
             if (!localKey) {
                   return Response.json({message:"internal server error" , status:500})
                 }
-             const LoginToken = jwt.sign(TokenInfo,localKey)
+             const LoginToken = jwt.sign(TokenInfo,localKey,{expiresIn:"7d"})
              if (user_verify_key === true) {
                   const checkPassword = await bcrypt.compare(userData.user_password, checkVerification.user_password)
                   if (!checkPassword) {
@@ -52,11 +52,10 @@ export async function POST(userRequest: Request) {
                    
                    try {
                          await transport.sendMail(mailOption)
-                         return Response.json({ message: "account verified", status: 200 })
+             return Response.json({message:"login success" , status:200 , accessToken:LoginToken})
                     } catch (error) {
                    return Response.json({ message: "cant send mail", status: 400 })
                    }
-             return Response.json({message:"login success" , status:200 , accessToken:LoginToken})
             
             } else {
 
