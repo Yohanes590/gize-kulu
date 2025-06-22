@@ -46,7 +46,7 @@ export async function POST(userRequest: Request) {
                         to: fetchEmail,
                         subject: `You are now logged in at ${time} on the Gezi Kulu App.`,
                         html: `
-                        Hi ${fetchEmail.user_name},
+                        Hi ${decodeUserToken.userInfo.user_name},
                         Thank you for logging in to Gezi Kulu. We're excited to have you back!
                         If you have any questions or need help, feel free to reach out to us anytime.
                         Happy exploring!

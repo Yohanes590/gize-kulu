@@ -62,7 +62,7 @@ export default function SignUp() {
                         Cookie.remove("OTP-TOKEN")
                         OtpElement.classList.remove("hidden")
                         OtpElement.classList.add("flex")
-                        Cookie.set("access-token" , ServerRespond.accessToken)
+                        Cookie.set("access-token" , ServerRespond.accessToken ,{sameSite:"strict" ,secure:true})
                   } else {
                         const serverSplit = ServerRespond.message.split(":")
                         if (serverSplit[4] == " `User_user_email_key`") {
@@ -98,7 +98,7 @@ export default function SignUp() {
                   toast.error("Client Error!")
             } else {
                   toast.success("Check You Email Inbox!")
-                  Cookie.set("OTP-TOKEN" ,ChangeResponse.otpToken)
+                  Cookie.set("OTP-TOKEN" ,ChangeResponse.otpToken,{sameSite:"strict" ,secure:true})
             }
       }
       const [ otpButton , setOTPButton ]= useState<boolean>(false)
@@ -126,6 +126,7 @@ export default function SignUp() {
             toast.dismiss(verifiedLoading)
             console.log(serverResponse)
             if (serverResponse.status === 200) {
+                  Cookie.remove("OTP-TOKEN")
                   toast.success(serverResponse.message)
                   window.location.href="/dashboard"
             } else if (serverResponse.status === 400) {
@@ -138,8 +139,8 @@ export default function SignUp() {
 
                   <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[250px] w-[400px]">
                         <div className="otp-compo">
-                              <h1>Check your email inbox <br/>
-                                    we've sent you an OTP.</h1>
+                        <h1>Please verify your account.<br/>
+                        Click "Send OTP" to receive your OTP.</h1>
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOtp}/>
                               </div>

@@ -50,12 +50,12 @@ export default function SignIN() {
                   if (serverResponse.status == 200) {
                         toast.success(serverResponse.message)
                         Cookie.remove("OTP-TOKEN")
-                        Cookie.set("access-token", serverResponse.accessToken)
+                        Cookie.set("access-token", serverResponse.accessToken,{sameSite:"strict" ,secure:true})
                         window.location.href="/dashboard"
                   } else if (serverResponse.status == 404) {
                         toast.error(serverResponse.message)
                   } else if (serverResponse.status == 401) {
-                        Cookie.set("access-token", serverResponse.accessToken)
+                        Cookie.set("access-token", serverResponse.accessToken,{sameSite:"strict" ,secure:true})
                         const OtpElement = document.querySelector(".sign-in-otp-container") as HTMLElement;
                         OtpElement.classList.remove("hidden")
                         OtpElement.classList.add("flex") 
@@ -85,7 +85,7 @@ export default function SignIN() {
             const serverResponse = await SendOTP.json()
             if (serverResponse.status == 200) {
                   toast.success("Check You Email Inbox!")
-                  Cookie.set("OTP-TOKEN" ,serverResponse.otpToken)
+                  Cookie.set("OTP-TOKEN" ,serverResponse.otpToken,{sameSite:"strict" ,secure:true})
             } else {
                   toast.error("Client Error!")
             }
@@ -109,6 +109,7 @@ export default function SignIN() {
             const serverResponding = await SendForServer.json()
             toast.dismiss(Au)
             if (serverResponding.status === 200) {
+                  Cookie.remove("OTP-TOKEN")
                   toast.success(serverResponding.message)
                   window.location.href="/dashboard"
             } else {
@@ -122,8 +123,8 @@ export default function SignIN() {
 
                   <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[250px] w-[400px]">
                         <div className="otp-compo">
-                              <h1>Check your email inbox <br/>
-                                    we've sent you an OTP.</h1>
+                        <h1>Please verify your account.<br/>
+                        Click "Send OTP" to receive your OTP.</h1>
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOTP}/>
                               </div>
