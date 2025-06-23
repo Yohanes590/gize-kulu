@@ -18,7 +18,7 @@ export default function AddingProjectFunction() {
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
             setButton(true)
             createButton.style.background="#F1F1F1"
-            createButton.style.color="black"
+            createButton.style.color="#b6b8ba"
             createButton.style.cursor="progress"
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
@@ -39,7 +39,9 @@ export default function AddingProjectFunction() {
             setButton(false)
             const serverResponse = await sendingToServer.json()
             if (serverResponse.status == 200) {
-                  
+                  toast.success(serverResponse.message)
+            } else {
+                  toast.error(serverResponse.message)
             }
             console.log(serverResponse)
       }
@@ -65,7 +67,7 @@ export default function AddingProjectFunction() {
                         <textarea id="project-description" className="bg-[#f1f1f1] w-[650px] h-[200px] pl-[20px] pt-[25px] rounded-[10px]" placeholder="Description" />
                         </div>
                         <div className="input mt-[20px] flex flex-wrap gap-5">
-                        <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
+                        <button onClick={()=>{window.location.href="/dashboard"}} className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
                         <button disabled={buttonBiz} id="button-create-task" onClick={CreatingProject} className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Project</button>
                         </div>
                   </div>
