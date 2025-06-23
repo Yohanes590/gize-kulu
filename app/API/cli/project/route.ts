@@ -13,13 +13,11 @@ export async function POST(userRequest: Request) {
             },
             data: {
                   user_projects: {
-                        push: {
-                              project_name: UserInfo.ProjectName,
-                              started_date: UserInfo.ProjectStartDate,
-                              due_dare: UserInfo.ProjectDueDate,
-                              project_description: UserInfo.ProjectDescription,
-                              project_task: []
-                        }
+                        project_name: UserInfo.ProjectName,
+                        started_date: UserInfo.ProjectStartDate,
+                        due_dare: UserInfo.ProjectDueDate,
+                        project_description: UserInfo.ProjectDescription,
+                        project_task: []
                   }
             }
       })
