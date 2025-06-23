@@ -16,7 +16,8 @@ export default function AddingProjectFunction() {
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
             setButton(true)
-            createButton.style.background="#484849"
+            createButton.style.background="#F1F1F1"
+            createButton.style.color="black"
             createButton.style.cursor="progress"
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
@@ -32,6 +33,7 @@ export default function AddingProjectFunction() {
                   })
             })
             createButton.style.background="#0F172A"
+            createButton.style.color="white"
             createButton.style.cursor="pointer"
             setButton(false)
             const serverResponse = await sendingToServer.json()
