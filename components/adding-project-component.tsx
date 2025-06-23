@@ -11,10 +11,13 @@ export default function AddingProjectFunction() {
       const [buttonBiz, setButton] = useState<boolean>()
       
       const CreatingProject = async () => {
+            const createButton = document.getElementById("button-create-task") as HTMLElement
             const userToken = Cookie.get("access-token")
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
             setButton(true)
+            createButton.style.background="#484849"
+            createButton.style.cursor="progress"
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
                   headers: {
@@ -28,6 +31,8 @@ export default function AddingProjectFunction() {
                         ProjectDueDate: dueDate,
                   })
             })
+            createButton.style.background="#0F172A"
+            createButton.style.cursor="pointer"
             setButton(false)
             const serverResponse = await sendingToServer.json()
             console.log(serverResponse)
