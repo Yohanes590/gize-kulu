@@ -7,7 +7,8 @@ export async function POST(userRequest: Request) {
             return Response.json({message:"server error!" , status:500})
       }
       const DecodeUserToken = jwt.verify(UserInfo.user_token, verifyKey) as JwtPayload
-      const AllProject = await prisma.$runCommandRaw({
+      try {
+                const AllProject = await prisma.$runCommandRaw({
             update: "User",
             updates: [
                   {
@@ -27,5 +28,8 @@ export async function POST(userRequest: Request) {
       
             ]
      })
-      return Response.json(AllProject)
+      return Response.json({message:"project added successfully!" , status:200})
+      } catch (error) {
+      return Response.json({message:"can't added project",status:500})
+      }
 }

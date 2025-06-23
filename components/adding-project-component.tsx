@@ -4,6 +4,7 @@ import ProjectDatePicker from "./prject-date"
 import ProjectDueDate from "./due-projecr-date"
 import Cookie from 'js-cookie'
 import { useState } from "react"
+import { Toaster ,toast } from "react-hot-toast"
 export default function AddingProjectFunction() {
 
       const [startDate, setStartDate] = useState<Date | undefined>();
@@ -37,9 +38,13 @@ export default function AddingProjectFunction() {
             createButton.style.cursor="pointer"
             setButton(false)
             const serverResponse = await sendingToServer.json()
+            if (serverResponse.status == 200) {
+                  
+            }
             console.log(serverResponse)
       }
       return (<>
+            <Toaster/>
             <SideNavBar />
             <div className="adding-project-function ml-[400px] pt-[80px]">
             <div className="adding-task-heading">
