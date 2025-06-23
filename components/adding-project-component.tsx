@@ -8,11 +8,13 @@ export default function AddingProjectFunction() {
 
       const [startDate, setStartDate] = useState<Date | undefined>();
       const [dueDate, setDueDate] = useState<Date | undefined>();
-
+      const [buttonBiz, setButton] = useState<boolean>()
+      
       const CreatingProject = async () => {
             const userToken = Cookie.get("access-token")
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
+            setButton(true)
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
                   headers: {
@@ -26,6 +28,7 @@ export default function AddingProjectFunction() {
                         ProjectDueDate: dueDate,
                   })
             })
+            setButton(false)
             const serverResponse = await sendingToServer.json()
             console.log(serverResponse)
       }
@@ -51,7 +54,7 @@ export default function AddingProjectFunction() {
                         </div>
                         <div className="input mt-[20px] flex flex-wrap gap-5">
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
-                        <button onClick={CreatingProject} className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Project</button>
+                        <button disabled={buttonBiz} id="button-create-task" onClick={CreatingProject} className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Project</button>
                         </div>
                   </div>
 
