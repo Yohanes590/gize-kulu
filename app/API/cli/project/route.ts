@@ -7,30 +7,21 @@ export async function POST(userRequest: Request) {
             return Response.json({message:"server error!" , status:500})
       }
       const DecodeUserToken = jwt.verify(UserInfo.user_token, verifyKey) as JwtPayload
-      const AllProject = prisma.$runCommandRaw({
-            update: "User",
-            updates: [
-                  {
-                        q: { user_email: DecodeUserToken.userInfo.user_email },
-                        u: {
-                              $push:{
+     const AllProject= await prisma.user.update({
+            where: {
+                  user_email:DecodeUserToken.userInfo.user_email
+            },
+            data: {
+                  user_projects: {
+                        push: {
                               project_name: UserInfo.ProjectName,
                               started_date: UserInfo.ProjectStartDate,
                               due_dare: UserInfo.ProjectDueDate,
                               project_description: UserInfo.ProjectDescription,
                               project_task: []
-                              }
                         }
                   }
-            ]
-     })
+            }
+      })
       return Response.json(AllProject)
 }
-
-//  push: {
-//                               project_name: UserInfo.ProjectName,
-//                               started_date: UserInfo.ProjectStartDate,
-//                               due_dare: UserInfo.ProjectDueDate,
-//                               project_description: UserInfo.ProjectDescription,
-//                               project_task: []
-//                         }
