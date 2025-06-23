@@ -10,10 +10,14 @@ import {
 } from "@/components/ui/popover"
 
 
-export default function ProjectDueDate() {
+interface DateType{
+  date: Date | undefined,
+  onChange:(date:Date | undefined)=> void
+}
+
+export default function ProjectDueDate({date , onChange}:DateType) {
      
       const [open, setOpen] = React.useState(false)
-      const [date, setDate] = React.useState<Date | undefined>(undefined)
       return (
         <div className="flex flex-col gap-3">
           <Popover open={open} onOpenChange={setOpen}>
@@ -36,7 +40,7 @@ export default function ProjectDueDate() {
                 selected={date}
                 captionLayout="dropdown"
                 onSelect={(date) => {
-                  setDate(date)
+                  onChange(date)
                   setOpen(false)
                 }}
               />

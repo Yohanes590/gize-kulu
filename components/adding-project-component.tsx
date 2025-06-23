@@ -6,13 +6,12 @@ import Cookie from 'js-cookie'
 import { useState } from "react"
 export default function AddingProjectFunction() {
 
+      const [startDate, setStartDate] = useState<Date | undefined>();
       const [dueDate, setDueDate] = useState<Date | undefined>();
 
       const CreatingProject = async () => {
             const userToken = Cookie.get("access-token")
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
-            const ProjectStartDate = document.getElementById("project-start-date") as HTMLInputElement
-            const ProjectDueDate = document.getElementById("project-due-date") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
@@ -21,8 +20,14 @@ export default function AddingProjectFunction() {
                   },
                   body: JSON.stringify({
                         user_token: userToken,
+                        ProjectName: ProjectName.value,
+                        ProjectDescription: ProjectDescription.value,
+                        ProjectStartDate: startDate,
+                        ProjectDueDate: dueDate,
                   })
             })
+            const serverResponse = await sendingToServer.json()
+            console.log(serverResponse)
       }
       return (<>
             <SideNavBar />
@@ -36,17 +41,17 @@ export default function AddingProjectFunction() {
                   <div className="adding-project-input-section mt-[50px] grid">
                         <input id="project-name" type="text" className="h-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px] " placeholder="Project Name" />
                         <div className="input mt-[20px]">
-                        <ProjectDatePicker date={dueDate} onChange={setDueDate} />
+                        <ProjectDatePicker date={startDate} onChange={setStartDate} />
                         </div>
                         <div className="input mt-[20px]">
-                        <ProjectDueDate />
+                        <ProjectDueDate date={dueDate} onChange={setDueDate} />
                         </div>
                         <div className="input mt-[20px]">
-                        <textarea className="bg-[#f1f1f1] w-[650px] h-[200px] pl-[20px] pt-[25px] rounded-[10px]" placeholder="Description" />
+                        <textarea id="project-description" className="bg-[#f1f1f1] w-[650px] h-[200px] pl-[20px] pt-[25px] rounded-[10px]" placeholder="Description" />
                         </div>
                         <div className="input mt-[20px] flex flex-wrap gap-5">
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
-                        <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Project</button>
+                        <button onClick={CreatingProject} className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Project</button>
                         </div>
                   </div>
 

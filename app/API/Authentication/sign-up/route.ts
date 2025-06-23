@@ -25,7 +25,7 @@ export async function POST(UserInfo: Request) {
                         user_name: ClientData.user_name,
                         user_email: ClientData.user_email,
                         user_password: HashedPassword,
-                        user_task: [],
+                        user_projects: [],
                         user_verify:false,
                   }
                   }) 

@@ -18,6 +18,6 @@ model User {
   user_name     String
   user_email    String  @unique
   user_password String
-  user_task     Json
+  user_projects Json
   user_verify   Boolean
 }
