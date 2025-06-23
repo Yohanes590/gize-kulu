@@ -6,7 +6,7 @@ import Cookie from 'js-cookie'
 import { useState } from "react"
 export default function AddingProjectFunction() {
 
-      const [dueDate, setDueDate] = useState<Date | undefined>(undefined);
+      const [dueDate, setDueDate] = useState<Date | undefined>();
 
       const CreatingProject = async () => {
             const userToken = Cookie.get("access-token")
@@ -36,7 +36,7 @@ export default function AddingProjectFunction() {
                   <div className="adding-project-input-section mt-[50px] grid">
                         <input id="project-name" type="text" className="h-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px] " placeholder="Project Name" />
                         <div className="input mt-[20px]">
-                        <ProjectDatePicker />
+                        <ProjectDatePicker date={dueDate} onChange={setDueDate} />
                         </div>
                         <div className="input mt-[20px]">
                         <ProjectDueDate />
