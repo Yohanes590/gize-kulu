@@ -1,7 +1,28 @@
 import SideNavBar from "./client/side-nav"
 import ProjectDatePicker from "./prject-date"
 import ProjectDueDate from "./due-projecr-date"
+import Cookie from 'js-cookie'
+import { useState } from "react"
 export default function AddingProjectFunction() {
+
+      const  [ startDateValue , setStartDate ] = useState<Date | undefined>()
+
+      const CreatingProject = async () => {
+            const userToken = Cookie.get("access-token")
+            const ProjectName = document.getElementById("project-name") as HTMLInputElement
+            const ProjectStartDate = document.getElementById("project-start-date") as HTMLInputElement
+            const ProjectDueDate = document.getElementById("project-due-date") as HTMLInputElement
+            const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
+            const sendingToServer = await fetch("/API/cli/project", {
+                  method: "post",
+                  headers: {
+                        "Content-Type":"application/json"
+                  },
+                  body: JSON.stringify({
+                        user_token: userToken,
+                  })
+            })
+      }
       return (<>
             <SideNavBar />
             <div className="adding-project-function ml-[400px] pt-[80px]">
@@ -12,9 +33,9 @@ export default function AddingProjectFunction() {
 
 
                   <div className="adding-project-input-section mt-[50px] grid">
-                        <input type="text" className="h-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px] " placeholder="Project Name" />
+                        <input id="project-name" type="text" className="h-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px] " placeholder="Project Name" />
                         <div className="input mt-[20px]">
-                        <ProjectDatePicker />
+                        <ProjectDatePicker  />
                         </div>
                         <div className="input mt-[20px]">
                         <ProjectDueDate />

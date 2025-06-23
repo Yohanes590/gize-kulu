@@ -68,7 +68,7 @@ export default function SignUp() {
                         if (serverSplit[4] == " `User_user_email_key`") {
                               toast.error("Email Already Taken")
                         } else {
-                              toast.error("Server Error!")
+                              toast.error("Invalid signup credentials")
                         }
                   }
 
