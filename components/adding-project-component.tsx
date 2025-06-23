@@ -13,10 +13,22 @@ export default function AddingProjectFunction() {
       
       const CreatingProject = async () => {
             const createButton = document.getElementById("button-create-task") as HTMLElement
+            const ErrorDisplay = document.getElementById("error-display") as HTMLInputElement
             const userToken = Cookie.get("access-token")
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
-            setButton(true)
+            if (!userToken) {
+                 window.location.href="/dashboard"
+            } else if (ProjectName.value == "") {
+                 ErrorDisplay.innerText="Please insert project name"
+            } else if (ProjectDescription.value == "") {
+                 ErrorDisplay.innerText="Please insert project description"
+            } else if (!startDate) {
+                 ErrorDisplay.innerText="Please insert project start date"
+            }else if (!dueDate) {
+                 ErrorDisplay.innerText="Please insert project due date"
+            } else {
+                   setButton(true)
             createButton.style.background="#F1F1F1"
             createButton.style.color="#b6b8ba"
             createButton.style.cursor="progress"
@@ -44,6 +56,7 @@ export default function AddingProjectFunction() {
                   toast.error(serverResponse.message)
             }
             console.log(serverResponse)
+           }
       }
       return (<>
             <Toaster/>
@@ -56,6 +69,7 @@ export default function AddingProjectFunction() {
 
 
                   <div className="adding-project-input-section mt-[50px] grid">
+                        <h3 id="error-display" className="mb-[30px] text-red-400"></h3>
                         <input id="project-name" type="text" className="h-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px] " placeholder="Project Name" />
                         <div className="input mt-[20px]">
                         <ProjectDatePicker date={startDate} onChange={setStartDate} />
