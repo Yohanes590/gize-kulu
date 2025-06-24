@@ -23,15 +23,16 @@ export default function AddingProjectFunction() {
                  ErrorDisplay.innerText="Please insert project name"
             } else if (ProjectDescription.value == "") {
                  ErrorDisplay.innerText="Please insert project description"
-            } else if (!startDate) {
+            } else if (startDate == undefined) {
                  ErrorDisplay.innerText="Please insert project start date"
-            }else if (!dueDate) {
+            }else if (dueDate == undefined) {
                  ErrorDisplay.innerText="Please insert project due date"
             } else {
                    setButton(true)
             createButton.style.background="#F1F1F1"
             createButton.style.color="#b6b8ba"
             createButton.style.cursor="progress"
+            ErrorDisplay.innerText=""
             const sendingToServer = await fetch("/API/cli/project", {
                   method: "post",
                   headers: {
