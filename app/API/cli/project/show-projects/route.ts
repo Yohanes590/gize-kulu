@@ -13,7 +13,7 @@ export async function POST(request: Request) {
                   where: {
                         user_email:UserEmail
                   }
-            })
+            }) 
       return Response.json(userInfo?.user_projects) 
       } catch (error) {
             return Response.json({message:"please login again!" , status:400})

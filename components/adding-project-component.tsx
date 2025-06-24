@@ -17,6 +17,7 @@ export default function AddingProjectFunction() {
             const userToken = Cookie.get("access-token")
             const ProjectName = document.getElementById("project-name") as HTMLInputElement
             const ProjectDescription = document.getElementById("project-description") as HTMLInputElement
+            const ProjectStatus = document.getElementById("project-status") as HTMLSelectElement
             if (!userToken) {
                  window.location.href="/dashboard"
             } else if (ProjectName.value == "") {
@@ -44,6 +45,8 @@ export default function AddingProjectFunction() {
                         ProjectDescription: ProjectDescription.value,
                         ProjectStartDate: startDate,
                         ProjectDueDate: dueDate,
+                        ProjectStatus:ProjectStatus.value
+
                   })
             })
             createButton.style.background="#0F172A"
@@ -77,6 +80,14 @@ export default function AddingProjectFunction() {
                         </div>
                         <div className="input mt-[20px]">
                         <ProjectDueDate date={dueDate} onChange={setDueDate} />
+                        </div>
+                        <div className="input mt-[20px]">
+                              <select id="project-status" className="h-[50px] pr-[50px] bg-[#f1f1f1] w-[650px] pl-[20px] rounded-[10px]">
+                                    <option value="in-complete">In Complete</option>
+                                    <option value="progress">Progress</option>
+                                    <option value="complete">Complete</option>
+                                    <option value="paused">Paused</option>
+                        </select>
                         </div>
                         <div className="input mt-[20px]">
                         <textarea id="project-description" className="bg-[#f1f1f1] w-[650px] h-[200px] pl-[20px] pt-[25px] rounded-[10px]" placeholder="Description" />

@@ -18,8 +18,9 @@ export async function POST(userRequest: Request) {
                         user_projects: {
                         project_name: UserInfo.ProjectName,
                         started_date: UserInfo.ProjectStartDate,
-                        due_dare: UserInfo.ProjectDueDate,
+                        due_date: UserInfo.ProjectDueDate,
                         project_description: UserInfo.ProjectDescription,
+                        project_status: UserInfo.ProjectStatus,
                         project_task: []
                                     }
                         }

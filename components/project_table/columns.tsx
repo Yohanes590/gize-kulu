@@ -5,7 +5,7 @@ export type Payment = {
   id: string
   project_name: string,
   project_status: string,
-  total_task: number,
+  total_task: any[],
   started_date: string,
   due_date: string,
   action:string
@@ -23,6 +23,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "total_task",
     header: "Total Task",
+    cell: ({ row }) => row.original.total_task?.length??0
   },
   {
     accessorKey: "due_date",

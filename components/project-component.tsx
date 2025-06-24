@@ -4,6 +4,7 @@ import { columns, Payment } from "./project_table/columns"
 import { DataTable } from "./project_table/data-table"
 import React, { useState, useEffect } from "react"
 import Cookie from "js-cookie"
+import { Toaster, toast } from "react-hot-toast"
 export default function ProjectFunction() {
   
   const [ data , SetData ] = useState<Payment[]>([])
@@ -11,7 +12,8 @@ export default function ProjectFunction() {
 
   useEffect(() => {
     
-    const FetchingProjects = async ():Promise<void> => {
+    const FetchingProjects = async (): Promise<void> => {
+      const FetchingAnime = toast.loading("fetching projects...")
       const user_token = Cookie.get("access-token")
       const sendCookie =await fetch("/API/cli/project/show-projects", {
         method: "post",
@@ -23,6 +25,8 @@ export default function ProjectFunction() {
         })
       })
       const ServerData = await sendCookie.json()
+      toast.dismiss(FetchingAnime)
+      SetData(ServerData)
       SetData(ServerData)
       setFilterData(ServerData)
       console.log(ServerData)
@@ -37,7 +41,8 @@ export default function ProjectFunction() {
             const filterProjectName = data.filter(project => project.project_name.toLocaleLowerCase().includes(changeValue.toLocaleLowerCase()))
             setFilterData(filterProjectName)
       }
-      return (<>
+  return (<>
+        <Toaster/>
             <SideNavBar />
             
             <div className="projects-container ml-[400px] pt-[80px]">
