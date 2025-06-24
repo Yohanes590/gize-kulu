@@ -6,8 +6,8 @@ import React, { useState, useEffect } from "react"
 import Cookie from "js-cookie"
 export default function ProjectFunction() {
   
-  let data: Payment[] = []
-  const [ gettingData , SetData ] = useState<Payment[]>()
+  const [ data , SetData ] = useState<Payment[]>([])
+  const [ filterData , setFilterData ] = useState<Payment[]>([])
 
   useEffect(() => {
     
@@ -23,6 +23,8 @@ export default function ProjectFunction() {
         })
       })
       const ServerData = await sendCookie.json()
+      SetData(ServerData)
+      setFilterData(ServerData)
       console.log(ServerData)
     }
     FetchingProjects()
@@ -30,7 +32,6 @@ export default function ProjectFunction() {
   },[])
 
 
-      const [ filterData , setFilterData ] = useState<Payment[]>(data)
 
       const FilterFunction = (changeValue:string) => {
             const filterProjectName = data.filter(project => project.project_name.toLocaleLowerCase().includes(changeValue.toLocaleLowerCase()))
