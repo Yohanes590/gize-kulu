@@ -186,6 +186,13 @@ body{
   .adding-project-function{
     margin-left: 10px;
   }
+  .project-details-container{
+    margin-left: 10px;
+  }
+  .project-details-container button{
+    margin-top: 10px;
+    margin-left: 0px;
+  }
 }
 
 @media(max-width:998px){
