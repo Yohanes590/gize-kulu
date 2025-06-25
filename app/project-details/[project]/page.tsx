@@ -1,4 +1,10 @@
 "use client";
-export default function ClientProjectDetails({ project }: { project: string }) {
-  return <p>project details: {project}</p>;
+
+import { useParams } from "next/navigation";
+
+export default function ClientProjectDetails() {
+  const params = useParams();
+  const project = params.project 
+
+  return <p>Project details: {project}</p>;
 }
