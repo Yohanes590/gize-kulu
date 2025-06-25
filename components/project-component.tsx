@@ -29,7 +29,6 @@ export default function ProjectFunction() {
       SetData(ServerData)
       SetData(ServerData)
       setFilterData(ServerData)
-      console.log(ServerData)
     }
     FetchingProjects()
     
@@ -49,7 +48,7 @@ export default function ProjectFunction() {
                   <h1 className="text-[30px] font-bold">Projects</h1>
                   <p className="text-[#b4b4b4]">Manage and filter your projects</p>
                       <div className="search-task-input mt-[20px]">
-                        <input onChange={(e:React.ChangeEvent<HTMLInputElement>)=>FilterFunction(e.target.value)} type="text"placeholder="Filer by project name.." className="h-[45px] w-[400px] outline-violet-500 transition-all duration-500 bg-[#e9e9e9] pl-[20px] rounded-[10px]" />
+                        <input onChange={(e:React.ChangeEvent<HTMLInputElement>)=>FilterFunction(e.target.value)} type="text"placeholder="Filer by project name.." className="h-[45px] w-[400px] outline-blue-500 transition-all duration-500 bg-[#e9e9e9] pl-[20px] rounded-[10px]" />
                         </div>
                   <div className="table-component w-[95%]">
                   <div className="container mx-auto py-10 " >

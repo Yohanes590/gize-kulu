@@ -1,0 +1,12 @@
+.each-card-container{
+      background:
+      radial-gradient(circle at 5% 5%, rgba(0, 110, 255, 0.479) 0px ,transparent 150px),
+      radial-gradient(circle at 100% 100%, rgba(0, 110, 255, 0.479) 0px ,transparent 150px);
+      transition: all 800ms;
+      background-position: 5% 5%, 100% 100%;
+      cursor: pointer;
+      animation: gradAnime 2s infinite alternate;
+      transition: all 800ms;
+      background-repeat: no-repeat;
+      background-size: auto;
+}

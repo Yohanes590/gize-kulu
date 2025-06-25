@@ -8,13 +8,15 @@ export type Payment = {
   total_task: any[],
   started_date: string,
   due_date: string,
-  action:string
+  action: string,
+  actionCenter2:string,
 }
 
 export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "project_name",
     header: "Project Name",
+
   },
   {
     accessorKey: "project_status",
@@ -37,7 +39,14 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "action",
     header: "Action",
     cell: ({row}) => {
-     return( <button className="bg-red-400 text-white w-[90px] rounded-[10px] cursor-pointer h-[30px]" onClick={()=>console.log(row.original.id)}>Delete</button>)
+     return( <button className="bg-red-400 text-white w-[90px] rounded-[10px] cursor-pointer h-[30px]" onClick={()=>console.log(row.original.project_name)}>Delete</button>)
+    }
+  },
+    {
+    accessorKey: "actionCenter2",
+    header: "Edit",
+    cell: ({row}) => {
+     return( <button className="bg-yellow-500 text-white w-[90px] rounded-[10px] cursor-pointer h-[30px]" onClick={()=>window.location.href="/project-details/"+row.original.project_name}>Edit</button>)
     }
   },
   

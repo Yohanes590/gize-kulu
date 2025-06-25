@@ -2,6 +2,7 @@
 import { HiOutlineAdjustments } from "react-icons/hi";
 import { MdDashboardCustomize } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
+import  "./style.css"
 export default function AboutPage() {
       return <>
       
@@ -14,7 +15,7 @@ export default function AboutPage() {
 
                   <div className="flex-card-containers flex flex-wrap justify-center gap-3">
 
-                        <div className="each-card-container pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
+                        <div className="each-card-container backdrop-blur-2xl pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
                               <div className="card-message">
                                     <h1 className="font-bold text-[25px]">Smart Task Status Workflow</h1>
                                     <p className="text-[#858585] pt-[5px]">Gize Kulu organizes tasks into clear stages: 
@@ -30,7 +31,7 @@ export default function AboutPage() {
                                     </div>
                               </div>  
                         </div>  
-                        <div className="each-card-container pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
+                        <div className="each-card-container backdrop-blur-2xl pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
                               <div className="card-message">
                                     <h1 className="font-bold text-[25px]">Secure Authentication</h1>
                                     <p className="text-[#858585] pt-[5px]">The app uses email verification and JWT
@@ -44,7 +45,7 @@ export default function AboutPage() {
                                     </div>
                               </div>  
                         </div>  
-                        <div className="each-card-container pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
+                        <div className="each-card-container backdrop-blur-2xl pl-[25px] pt-[40px] mt-[50px] w-[450px] h-[270px] shadow-[0_0_5px_#d6d6d6] rounded-[10px]">
                               <div className="card-message">
                                     <h1 className="font-bold text-[25px]">Dashboard & Analytics</h1>
                                     <p className="text-[#858585] pt-[5px]">Gize Kulu includes a clean dashboard with charts and task stats. Users can visualize progress and analyze productivity trends, turning basic task tracking into an insightful user experience</p>
