@@ -5,6 +5,7 @@ export default function ClientProjectDetails() {
   const params = useParams();
   const project = params.project as string
   return <>
-  <SideNavBar/>
+    <SideNavBar />
+    
   </>;
 }
