@@ -29,7 +29,7 @@ export default function Dashboard() {
 
                               <div className="each-dashboard-card flex items-center justify-between pl-[20px] w-[350px] rounded-[10px] h-[120px] mt-[20px] shadow-[0_0_3px_#cecece]">
                                     <div className="card-titles">
-                                          <p className="text-[#6e6e6e]">Total Task</p>
+                                          <p className="text-[#6e6e6e]">Paused Project</p>
                                           <p className="text-[30px] font-bold">20</p>
                                     </div>
                                     <div className="icon-symbol text-orange-500 pr-[30px]">
@@ -39,7 +39,7 @@ export default function Dashboard() {
 
                               <div className="each-dashboard-card flex items-center justify-between pl-[20px] w-[350px] rounded-[10px] h-[120px] mt-[20px] shadow-[0_0_3px_#cecece]">
                                     <div className="card-titles">
-                                          <p className="text-[#6e6e6e]">Completed Task</p>
+                                          <p className="text-[#6e6e6e]">Completed Project</p>
                                           <p className="text-[30px] font-bold">14</p>
                                     </div>
                                     <div className="icon-symbol text-green-500 pr-[30px]">
@@ -49,10 +49,10 @@ export default function Dashboard() {
 
                               <div className="each-dashboard-card flex items-center justify-between pl-[20px] w-[350px] rounded-[10px] h-[120px] mt-[20px] shadow-[0_0_3px_#cecece]">
                                     <div className="card-titles">
-                                          <p className="text-[#6e6e6e]">Completed Projects</p>
+                                          <p className="text-[#6e6e6e]">In completed Projects</p>
                                           <p className="text-[30px] font-bold">2</p>
                                     </div>
-                                    <div className="icon-symbol text-blue-500 pr-[30px]">
+                                    <div className="icon-symbol text-red-500 pr-[30px]">
                                           <FaFolder  size={25}/>  
                                     </div>
                               </div>
