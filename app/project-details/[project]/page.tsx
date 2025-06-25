@@ -6,6 +6,13 @@ export default function ClientProjectDetails() {
   const project = params.project as string
   return <>
     <SideNavBar />
-    
+    <div className="project-details-container ml-[400px] pt-[150px]">
+
+      <div className="project-name text-[18px] text-[#747474]">
+        <p>Project Details / { decodeURI(project) }</p>
+        </div>
+
+
+    </div>
   </>;
 }
