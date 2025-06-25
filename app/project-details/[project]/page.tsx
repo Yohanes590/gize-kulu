@@ -21,7 +21,7 @@ export default function ClientProjectDetails() {
         <p>Project Details / { decodeURI(project) }</p>
         </div>
 
-      <div className="table-card mt-[100px]">
+      <div className="table-card mt-[50px]">
 
         <div className="each-table-card w-[90%] cursor-pointer rounded-[10px] h-[200px] shadow-[0_0_5px_#747474]">
 
