@@ -1,3 +1,4 @@
+"use client"
 import SideNavBar from "./client/side-nav"
 import SelectionTwo from "./client/selection-2"
 import DatePicker from "./client/seletion-3"
@@ -6,11 +7,13 @@ import SelectionThree from "./client/todo-listing"
 import ProjectSelection from "./client/project-selection"
 import { Toaster, toast } from 'react-hot-toast'
 import { useEffect } from "react"
+import Cookies from "js-cookie"
 export default function AddingTaskFunction() {
 
       useEffect(() => {
       
             const AddingTask = async () => {
+                  
                   const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
