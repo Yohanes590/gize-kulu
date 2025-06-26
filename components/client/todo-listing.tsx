@@ -5,10 +5,16 @@ import {
       SelectItem,
       SelectTrigger,
       SelectValue,
-    } from "@/components/ui/select"
-export default function SelectionThree() {
+} from "@/components/ui/select"
+   
+type SelectionType = {
+  selectValue: string;
+  valueChange: (selectValue:string) =>void
+}
+
+export default function SelectionThree({selectValue , valueChange}:SelectionType) {
       return (<>
-            <Select>
+            <Select value={selectValue} onValueChange={valueChange}>
           <SelectTrigger className="w-[650px]" style={{
     height:"50px"
   }}>

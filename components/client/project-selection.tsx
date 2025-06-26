@@ -5,10 +5,18 @@ import {
       SelectItem,
       SelectTrigger,
       SelectValue,
-    } from "@/components/ui/select"
-export default function ProjectSelection() {
+} from "@/components/ui/select"
+   
+type ProjectTypeDefine = {
+  ProjectSelectionType: string,
+  OnProjectChange:(ProjectSelectionType:string)=>void
+}
+
+import { useEffect } from "react"
+
+export default function ProjectSelection({ ProjectSelectionType, OnProjectChange }:ProjectTypeDefine) {
       return (<>
-            <Select>
+            <Select value={ProjectSelectionType} onValueChange={OnProjectChange}>
           <SelectTrigger className="w-[650px]" style={{
     height:"50px"
   }}>

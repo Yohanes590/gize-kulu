@@ -11,8 +11,9 @@ import Cookies from "js-cookie"
 export default function AddingTaskFunction() {
 
       const [dueDateValue, setDueDate] = useState<Date | undefined>()
-      const [ startDate , setStartDate ] = useState<Date | undefined>()
-
+      const [startDate, setStartDate] = useState<Date | undefined>()
+      const [ selectionValue , setSelectionValue ] = useState<string>('')
+      const [ gettingProjectName , setProjectName] = useState<string>('')
       useEffect(() => {
       
             const AddingTask = async () => {
@@ -45,13 +46,13 @@ export default function AddingTaskFunction() {
                         </div>
                         
                         <div className="flex-input-box mt-[20px] flex flex-wrap items-center gap-5">
-                              <DatePicker2 />
+                              <DatePicker2 date={startDate} onChange={setStartDate} />
                               <DatePicker date={dueDateValue} onChange={setDueDate} />
                         </div>
                                    
                         <div className="flex-input-box mt-[20px] flex flex-wrap items-center gap-5">
-                              <SelectionThree />
-                              <ProjectSelection/>
+                              <SelectionThree selectValue={selectionValue} valueChange={setSelectionValue}/>
+                              <ProjectSelection ProjectSelectionType={gettingProjectName} OnProjectChange={setProjectName}/>
                         </div>
                         <div className="select-text-area">
                               <textarea className="w-[87%] mt-[20px] pl-[20px] pt-[20px] h-[300px] rounded-[10px] bg-[#f7f6f6]" placeholder="Description"/>
