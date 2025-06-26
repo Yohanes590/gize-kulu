@@ -4,7 +4,10 @@ import DatePicker from "./client/seletion-3"
 import DatePicker2 from "./client/section-4"
 import SelectionThree from "./client/todo-listing"
 import ProjectSelection from "./client/project-selection"
+import { Toaster, toast } from 'react-hot-toast'
 export default function AddingTaskFunction() {
+
+
       return (<>
             <SideNavBar />
             <div className="adding-task-container ml-[400px] pt-[80px]">
