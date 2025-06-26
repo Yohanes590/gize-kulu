@@ -1,6 +1,6 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table" 
 export type Payment = {
   id: string
   project_name: string,
@@ -9,7 +9,8 @@ export type Payment = {
   started_date: string,
   due_date: string,
   action: string,
-  actionCenter2:string,
+  actionCenter2: string,
+  project_task:any[]
 }
 
 export const columns: ColumnDef<Payment>[] = [
@@ -25,7 +26,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "total_task",
     header: "Total Task",
-    cell: ({ row }) => row.original.total_task?.length??0
+    cell: ({ row }) => row.original.project_task?.length??0
   },
   {
     accessorKey: "due_date",

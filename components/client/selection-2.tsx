@@ -5,10 +5,16 @@ import {
       SelectItem,
       SelectTrigger,
       SelectValue,
-    } from "@/components/ui/select"
-export default function SelectionTwo() {
+} from "@/components/ui/select"
+    
+type selectValueType = {
+  priority: string,
+  setPriority:(priority:string)=>void
+}
+
+export default function SelectionTwo({priority , setPriority}:selectValueType) {
       return (<>
-<Select>
+<Select value={priority} onValueChange={setPriority}>
           <SelectTrigger className="w-[650px] h-10 px-3 py-2 text-sm" style={{
     height:"50px"
   }}>

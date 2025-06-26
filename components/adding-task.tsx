@@ -10,26 +10,37 @@ import { useEffect , useState} from "react"
 import Cookies from "js-cookie"
 export default function AddingTaskFunction() {
 
-      const [dueDateValue, setDueDate] = useState<Date | undefined>()
-      const [startDate, setStartDate] = useState<Date | undefined>()
+      const [ dueDateValue, setDueDate ] = useState<Date | undefined>()
+      const [ startDate, setStartDate ] = useState<Date | undefined>()
       const [ selectionValue , setSelectionValue ] = useState<string>('')
-      const [ gettingProjectName , setProjectName] = useState<string>('')
-            const TaskName = document.getElementById("task-name") as HTMLInputElement
-            const TaskDes = document.getElementById("task-des") as HTMLInputElement
+      const [ gettingProjectName, setProjectName ] = useState<string>('')
+      const [ priority , setPriority ] = useState<string>('')
+      const [ disableButton , setButton ] = useState<boolean>(false)
+      const AddingTask = async () => {
       const userToken = Cookies.get("access-token")
-            const AddingTask = async () => {
+      const TaskName = document.getElementById("task-name") as HTMLInputElement
+            const TaskDes = document.getElementById("task-des") as HTMLInputElement
             const displayErrors = document.querySelector(".task-display") as HTMLElement
+            const task_button_element = document.querySelector(".task-button-element") as HTMLButtonElement
                   if (TaskName.value === '') {
                         displayErrors.innerText = ' task name missing'
-                  } else if (selectionValue == '') {
-                        displayErrors.innerText = ' pease insert priority '
+                  } else if (priority == '') {
+                        displayErrors.innerText = 'select priority level'
                   } else if (startDate === undefined) {
                         displayErrors.innerText = ' started date missing'
                   } else if (dueDateValue === undefined) {
                         displayErrors.innerText = ' due date missing'
+                  } else if (selectionValue === "") {
+                        displayErrors.innerText = ' select status'
                   } else if (gettingProjectName === '') {
                         displayErrors.innerText = ' project name missing '
+                  } else if (TaskDes.value === "") {
+                        displayErrors.innerText = ' project description missing '
                   } else {
+            setButton(true)
+            task_button_element.style.background="#F1F1F1"
+            task_button_element.style.color="#b6b8ba"
+            task_button_element.style.cursor="progress"
                          const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
@@ -44,8 +55,18 @@ export default function AddingTaskFunction() {
                               user_Token:userToken,
                               project_name:gettingProjectName
                         })
-                  })  
-                  const ServerResponse = await AddingTask.json()
+                         })  
+            setButton(false)
+            task_button_element.style.background="#0F172A"
+            task_button_element.style.color="white"
+            task_button_element.style.cursor="pointer"
+                        displayErrors.innerText = ' '
+                        const ServerResponse = await AddingTask.json()
+                        if (ServerResponse.status == 200) {
+                              toast.success("task has been created successfully")
+                        } else {
+                              toast.error("Task could not be created")
+                        }
                   console.log(ServerResponse)
                   }
             }
@@ -61,7 +82,7 @@ export default function AddingTaskFunction() {
                   <div className="input-section mt-[20px]">
                         <div className="flex-input-box flex flex-wrap items-center gap-5">
                         <input id="task-name" className="pl-[20px] h-[50px] rounded-[10px] w-[650px] bg-[#f7f6f6]" type="text" placeholder="Task title" />
-                              <SelectionTwo />
+                              <SelectionTwo priority={priority} setPriority={setPriority} />
                         </div>
                         
                         <div className="flex-input-box mt-[20px] flex flex-wrap items-center gap-5">
@@ -78,7 +99,7 @@ export default function AddingTaskFunction() {
                         </div>
                         <div className="buttons mt-[20px] flex-wrap flex gap-5">
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
-                        <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]" onClick={AddingTask}>Create Task</button>
+                        <button disabled={disableButton} className="task-button-element w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]" onClick={AddingTask}>Create Task</button>
                         </div>
                   </div>
             </div>
