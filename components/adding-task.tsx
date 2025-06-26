@@ -14,23 +14,28 @@ export default function AddingTaskFunction() {
       const [startDate, setStartDate] = useState<Date | undefined>()
       const [ selectionValue , setSelectionValue ] = useState<string>('')
       const [ gettingProjectName , setProjectName] = useState<string>('')
-      useEffect(() => {
-      
+            const TaskName = document.getElementById("task-name") as HTMLInputElement
+            const TaskDes = document.getElementById("task-des") as HTMLInputElement
+            const userToken = Cookies.get("access-token")
             const AddingTask = async () => {
                   const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
                               "Content-Type":"application/json"
-                        },
+                        }, 
                         body: JSON.stringify({
-                              message:"connected!"
+                              task_name: TaskName.value,
+                              status: selectionValue,
+                              start_date: startDate,
+                              due_date: dueDateValue,
+                              title_description: TaskDes.value,
+                              user_Token:userToken,
+                              project_name:gettingProjectName
                         })
                   })  
                   const ServerResponse = await AddingTask.json()
                   console.log(ServerResponse)
             }
-            AddingTask()
-},[])
 
       return (<>
             <SideNavBar />
@@ -41,7 +46,7 @@ export default function AddingTaskFunction() {
                   </div>
                   <div className="input-section mt-[20px]">
                         <div className="flex-input-box flex flex-wrap items-center gap-5">
-                        <input className="pl-[20px] h-[50px] rounded-[10px] w-[650px] bg-[#f7f6f6]" type="text" placeholder="Project title" />
+                        <input id="task-name" className="pl-[20px] h-[50px] rounded-[10px] w-[650px] bg-[#f7f6f6]" type="text" placeholder="Task title" />
                               <SelectionTwo />
                         </div>
                         
@@ -55,11 +60,11 @@ export default function AddingTaskFunction() {
                               <ProjectSelection ProjectSelectionType={gettingProjectName} OnProjectChange={setProjectName}/>
                         </div>
                         <div className="select-text-area">
-                              <textarea className="w-[87%] mt-[20px] pl-[20px] pt-[20px] h-[300px] rounded-[10px] bg-[#f7f6f6]" placeholder="Description"/>
+                              <textarea id="task-des" className="w-[87%] mt-[20px] pl-[20px] pt-[20px] h-[300px] rounded-[10px] bg-[#f7f6f6]" placeholder="Description"/>
                         </div>
                         <div className="buttons mt-[20px] flex-wrap flex gap-5">
                         <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[#0F172A] bg-[#f1f1f1]">Cancel</button>
-                        <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]">Create Task</button>
+                        <button className="w-[150px] cursor-pointer h-[45px] rounded-[10px] text-[white] bg-[#0F172A]" onClick={AddingTask}>Create Task</button>
                         </div>
                   </div>
             </div>
