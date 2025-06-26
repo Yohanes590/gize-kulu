@@ -5,8 +5,26 @@ import DatePicker2 from "./client/section-4"
 import SelectionThree from "./client/todo-listing"
 import ProjectSelection from "./client/project-selection"
 import { Toaster, toast } from 'react-hot-toast'
+import { useEffect } from "react"
 export default function AddingTaskFunction() {
 
+      useEffect(() => {
+      
+            const AddingTask = async () => {
+                  const AddingTask = await fetch("/API/cli/task/adding-task", {
+                        method: "post",
+                        headers: {
+                              "Content-Type":"application/json"
+                        },
+                        body: JSON.stringify({
+                              message:"connected!"
+                        })
+                  })  
+                  const ServerResponse = await AddingTask.json()
+                  console.log(ServerResponse)
+            }
+            AddingTask()
+},[])
 
       return (<>
             <SideNavBar />
