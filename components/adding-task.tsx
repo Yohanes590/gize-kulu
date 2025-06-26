@@ -6,14 +6,16 @@ import DatePicker2 from "./client/section-4"
 import SelectionThree from "./client/todo-listing"
 import ProjectSelection from "./client/project-selection"
 import { Toaster, toast } from 'react-hot-toast'
-import { useEffect } from "react"
+import { useEffect , useState} from "react"
 import Cookies from "js-cookie"
 export default function AddingTaskFunction() {
+
+      const [dueDateValue, setDueDate] = useState<Date | undefined>()
+      const [ startDate , setStartDate ] = useState<Date | undefined>()
 
       useEffect(() => {
       
             const AddingTask = async () => {
-                  
                   const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
@@ -44,7 +46,7 @@ export default function AddingTaskFunction() {
                         
                         <div className="flex-input-box mt-[20px] flex flex-wrap items-center gap-5">
                               <DatePicker2 />
-                              <DatePicker />
+                              <DatePicker date={dueDateValue} onChange={setDueDate} />
                         </div>
                                    
                         <div className="flex-input-box mt-[20px] flex flex-wrap items-center gap-5">
