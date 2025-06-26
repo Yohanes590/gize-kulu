@@ -46,7 +46,7 @@ export default function ProjectSelection({ ProjectSelectionType, OnProjectChange
   </SelectTrigger>
           <SelectContent>
             {projectArray?.length === 0 ? (
-    <SelectItem value="">No Project Listed</SelectItem>
+    null
             ) : (
                 projectArray?.map((projectItems) =>
                 <SelectItem key={projectItems.project_name} value={projectItems.project_name}>{projectItems.project_name}</SelectItem>)
