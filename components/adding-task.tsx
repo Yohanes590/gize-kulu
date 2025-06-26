@@ -16,9 +16,21 @@ export default function AddingTaskFunction() {
       const [ gettingProjectName , setProjectName] = useState<string>('')
             const TaskName = document.getElementById("task-name") as HTMLInputElement
             const TaskDes = document.getElementById("task-des") as HTMLInputElement
-            const userToken = Cookies.get("access-token")
+      const userToken = Cookies.get("access-token")
             const AddingTask = async () => {
-                  const AddingTask = await fetch("/API/cli/task/adding-task", {
+            const displayErrors = document.querySelector(".task-display") as HTMLElement
+                  if (TaskName.value === '') {
+                        displayErrors.innerText = ' task name missing'
+                  } else if (selectionValue == '') {
+                        displayErrors.innerText = ' pease insert priority '
+                  } else if (startDate === undefined) {
+                        displayErrors.innerText = ' started date missing'
+                  } else if (dueDateValue === undefined) {
+                        displayErrors.innerText = ' due date missing'
+                  } else if (gettingProjectName === '') {
+                        displayErrors.innerText = ' project name missing '
+                  } else {
+                         const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
                               "Content-Type":"application/json"
@@ -35,6 +47,7 @@ export default function AddingTaskFunction() {
                   })  
                   const ServerResponse = await AddingTask.json()
                   console.log(ServerResponse)
+                  }
             }
 
       return (<>
@@ -43,6 +56,7 @@ export default function AddingTaskFunction() {
                   <div className="adding-task-heading">
                         <h1 className="font-bold text-[20px]">Adding Task</h1>
                         <h1 className="text-[#5f5f5f]">add new task for your project</h1>
+                        <h1 className="task-display text-red-400 mt-[10px]"></h1>
                   </div>
                   <div className="input-section mt-[20px]">
                         <div className="flex-input-box flex flex-wrap items-center gap-5">
