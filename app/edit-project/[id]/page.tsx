@@ -11,9 +11,15 @@ export default function EditProject() {
                         method: "post",
                         headers: {
                               "Content-Type":"application/json"
-                        }
-              })
-        }    
+                        },
+                        body: JSON.stringify({
+                              message:"connected"
+                        })
+                  })
+                  const serverResponse = await sendCookie.json()
+                  console.log(serverResponse)
+            } 
+        sendToServer()    
       },[])
 
       const params = useParams()
