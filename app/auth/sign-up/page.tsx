@@ -62,7 +62,7 @@ export default function SignUp() {
                         Cookie.remove("OTP-TOKEN")
                         OtpElement.classList.remove("hidden")
                         OtpElement.classList.add("flex")
-                        Cookie.set("access-token" , ServerRespond.accessToken ,{sameSite:"strict" ,secure:true})
+                        Cookie.set("access-token" , ServerRespond.accessToken ,{sameSite:"strict" ,secure:true , expires:7})
                   } else {
                         const serverSplit = ServerRespond.message.split(":")
                         if (serverSplit[4] == " `User_user_email_key`") {

@@ -50,7 +50,7 @@ export default function SignIN() {
                   if (serverResponse.status == 200) {
                         toast.success(serverResponse.message)
                         Cookie.remove("OTP-TOKEN")
-                        Cookie.set("access-token", serverResponse.accessToken,{sameSite:"strict" ,secure:true})
+                        Cookie.set("access-token", serverResponse.accessToken,{sameSite:"strict" ,secure:true , expires:7})
                         window.location.href="/dashboard"
                   } else if (serverResponse.status == 404) {
                         toast.error(serverResponse.message)
