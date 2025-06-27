@@ -197,6 +197,25 @@ body{
     margin-top: 10px;
     margin-left: 0px;
   }
+  .container-edit-project p{
+    margin-left: 15px;
+  }
+  .container-edit-project input{
+    width: 90%;
+    margin-left: 15px;
+  }
+  .container-edit-project button{
+    width: 90%;
+    margin-left: 15px;
+  }
+  .container-edit-project textarea{
+    width: 90%;
+    margin-left: 15px;
+  }
+    .container-edit-project select{
+    width: 90%;
+    margin-left: 15px;
+  }
 }
 
 @media(max-width:998px){

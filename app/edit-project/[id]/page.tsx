@@ -13,20 +13,20 @@ export default function EditProject() {
                   <div className="input-section mt-[50px]">
                         <div className="span-hover mb-[30px]">
                               <p>Project Name</p>
-                        <input className="w-[550px] h-[50px] pl-[15px] outline-1 outline-blue-500 mt-[10px] bg-[#f0f0f0]" type="text" placeholder="making some thing *" />
+                        <input className="w-[500px] h-[50px] pl-[15px] outline-1 outline-blue-500 mt-[10px] bg-[#f0f0f0]" type="text" placeholder="making some thing *" />
                         </div>
                         <div className="span-hover mb-[30px]">
                               <p>Started Date</p>
-                        <input type="date" className="w-[550px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
+                        <input type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
                         </div>
                         <div className="span-hover mb-[30px]">
                               <p>Due Date</p>
-                        <input type="date" className="w-[550px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
+                        <input type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
                         </div>
 
                          <div className="span-hover mb-[30px]">
                         <p>Started Date</p>
-                              <select className="w-[550px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]">
+                              <select className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]">
                                     <option>In Complete</option>
                                     <option>Process</option>
                                     <option>Complete</option>
@@ -37,11 +37,11 @@ export default function EditProject() {
 
                   <div className="span-hover">
                         <p>Project Description</p>
-                                    <textarea className="w-[550px] h-[200px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0] pt-[15px]" placeholder="This project ....."></textarea>
+                                    <textarea className="w-[500px] h-[200px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0] pt-[15px]" placeholder="This project ....."></textarea>
                         </div>
 
                                 <div className="span-hover mb-[30px]">
-                        <button className="bg-amber-400 w-[550px] h-[45px] cursor-pointer">Save Changes</button>
+                        <button className="bg-amber-400 w-[500px] h-[45px] cursor-pointer">Save Changes</button>
                         </div>
 
                   </div>
