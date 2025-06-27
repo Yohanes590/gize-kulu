@@ -16,7 +16,7 @@ export default function SignUp() {
             const Error_display = document.getElementById("error-display") as HTMLElement;
                         const SubmitButton = document.getElementById("submit-button") as HTMLElement;
                         const buttonLoading = document.querySelector(".loading") as HTMLElement
-                         const Empty = ""
+                        const Empty = ""
                         const userInformation = {
                               user_name: fullName.value,
                               user_email: email.value,
