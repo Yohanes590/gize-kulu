@@ -19,11 +19,12 @@ export default function ClientProjectDetails() {
   }
 
   type ProjectType = {
+    id:string,
     project_name: string
 }
 
   const [ array , setArray ] = useState<arrayType[]>()
-
+  const [ linkId , setLinkId ] = useState<ProjectType | null>(null)
 
   useEffect(() => {
     const user_token = Cookies.get("access-token")
@@ -49,7 +50,8 @@ export default function ClientProjectDetails() {
         if (filterProject == undefined) {
           window.location.href="/projects"
         } else {
-        setArray(filterProject.project_task)
+          setArray(filterProject.project_task)
+          setLinkId(filterProject)
         }
       }
     }
@@ -63,7 +65,10 @@ export default function ClientProjectDetails() {
     <div className="project-details-container ml-[400px] pt-[150px]">
 
       <div className="project-name text-[18px] text-[#747474]">
-        <p>Project Details / { decodeURI(project) } / <Link href="" className="text-blue-500">Edit Project</Link></p>
+        <p>Project Details / {decodeURI(project)} / 
+<button onClick={() => window.location.href = `/edit-project/${linkId?.id}` || "#"} className="text-blue-500 cursor-pointer">
+  Edit Project
+</button></p>
         </div>
 
       <div className="table-card mt-[50px]">
