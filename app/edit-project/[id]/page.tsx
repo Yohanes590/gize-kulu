@@ -8,8 +8,8 @@ export default function EditProject() {
       return <>
             <SideNavBar />
             <div className="container-edit-project ml-[400px] pt-[200px]">
-                  <div className="heading-project">
-                        <h1>Edit Project / <span>{ decodeURI(projectId) }</span></h1>
+                  <div className="heading-project text-[18]">
+                        <h1>Edit Project / <span className="text-blue-500">{ decodeURI(projectId) }</span></h1>
                   </div>
             </div>
             

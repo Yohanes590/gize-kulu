@@ -193,6 +193,10 @@ body{
     margin-top: 10px;
     margin-left: 0px;
   }
+  .container-edit-project{
+    margin-top: 10px;
+    margin-left: 0px;
+  }
 }
 
 @media(max-width:998px){
