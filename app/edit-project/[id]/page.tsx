@@ -1,7 +1,21 @@
 "use client"
 import { useParams } from "next/navigation"
 import SideNavBar from "@/components/client/side-nav"
+import Cookies from "js-cookie"
+import { useState , useEffect } from "react"
 export default function EditProject() {
+
+      useEffect(() => {
+            const sendToServer = async () => {
+                  const sendCookie = await fetch("/API/cli/project/edit-project", {
+                        method: "post",
+                        headers: {
+                              "Content-Type":"application/json"
+                        }
+              })
+        }    
+      },[])
+
       const params = useParams()
       const projectId = params.id as string
       return <>
