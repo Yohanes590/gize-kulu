@@ -40,13 +40,15 @@ export default function AddingTaskFunction() {
             setButton(true)
             task_button_element.style.background="#F1F1F1"
             task_button_element.style.color="#b6b8ba"
-            task_button_element.style.cursor="progress"
+                        task_button_element.style.cursor = "progress"
+                        const TaskId = Math.random().toString(36).slice(2)
                          const AddingTask = await fetch("/API/cli/task/adding-task", {
                         method: "post",
                         headers: {
                               "Content-Type":"application/json"
                         }, 
-                        body: JSON.stringify({
+                               body: JSON.stringify({
+                              id:TaskId,
                               task_name: TaskName.value,
                               status: selectionValue,
                               start_date: startDate,

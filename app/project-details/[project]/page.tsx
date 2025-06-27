@@ -5,6 +5,7 @@ import SideNavBar from "@/components/client/side-nav";
 import { useState, useEffect } from "react"; 
 import Cookies from "js-cookie";
 import { toast , Toaster} from "react-hot-toast";
+import Link from "next/link";
 export default function ClientProjectDetails() {
   const params = useParams();
   const project = params.project as string
@@ -62,7 +63,7 @@ export default function ClientProjectDetails() {
     <div className="project-details-container ml-[400px] pt-[150px]">
 
       <div className="project-name text-[18px] text-[#747474]">
-        <p>Project Details / { decodeURI(project) }</p>
+        <p>Project Details / { decodeURI(project) } / <Link href="" className="text-blue-500">Edit Project</Link></p>
         </div>
 
       <div className="table-card mt-[50px]">
