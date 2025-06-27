@@ -12,6 +12,7 @@ export default function AddingProjectFunction() {
       const [buttonBiz, setButton] = useState<boolean>()
       
       const CreatingProject = async () => {
+            const ProjectId = Math.random().toString(36).slice(2)
             const createButton = document.getElementById("button-create-task") as HTMLElement
             const ErrorDisplay = document.getElementById("error-display") as HTMLInputElement
             const userToken = Cookie.get("access-token")
@@ -41,6 +42,7 @@ export default function AddingProjectFunction() {
                   },
                   body: JSON.stringify({
                         user_token: userToken,
+                        Project_id:ProjectId,
                         ProjectName: ProjectName.value,
                         ProjectDescription: ProjectDescription.value,
                         ProjectStartDate: startDate,

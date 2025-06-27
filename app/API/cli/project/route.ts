@@ -15,7 +15,8 @@ export async function POST(userRequest: Request) {
                   q: { user_email: DecodeUserToken.userInfo.user_email },
                   u: {
                         $push:{
-                        user_projects: {
+                              user_projects: {
+                        id:UserInfo.Project_id,
                         project_name: UserInfo.ProjectName,
                         started_date: UserInfo.ProjectStartDate,
                         due_date: UserInfo.ProjectDueDate,
