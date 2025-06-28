@@ -2,7 +2,8 @@
 import { useParams } from "next/navigation"
 import SideNavBar from "@/components/client/side-nav"
 import Cookies from "js-cookie"
-import { useState , useEffect } from "react"
+import { useState, useEffect } from "react"
+import { Toaster , toast } from "react-hot-toast"
 export default function EditProject() {
       type projectType = {
             due_date: string,
@@ -22,12 +23,36 @@ export default function EditProject() {
       const [sDateValue, setSDateValue] = useState<string>("")
       const [dueDateValue, setDueDateValue] = useState<string>("")
       const [statusValue, setStatusValue] = useState<string>("")
-      const [description ,setDescriptionValue ] =useState<string>("")
+      const [description, setDescriptionValue] = useState<string>("")
+      
+                 const sendToServer = async () => {
+                 const ClientToken = Cookies.get("access-token")
+                  const sendCookie = await fetch("/API/cli/project/edit-project", {
+                        method: "post",
+                        headers: {
+                              "Content-Type":"application/json"
+                        },
+                        body: JSON.stringify({
+                              user_token: ClientToken,
+                              projectId: decodeURI(projectId),
+                              project_name: nameValue,
+                              started_date: sDateValue,
+                              due_date: dueDateValue,
+                              project_description:description,
+                              project_status:statusValue,
+                        })
+                  })
+                  const serverResponse = await sendCookie.json()
+                  console.log(serverResponse)
+            }
+
+// 0919374426
       useEffect(() => {
 
 
              const fetchProject = async () => {
-                 const ClientToken = Cookies.get("access-token")
+                   const ClientToken = Cookies.get("access-token")
+                   const loadingToast = toast.loading("retrieving filtered results...")
                   const sendCookie = await fetch("/API/cli/project/show-projects", {
                         method: "post",
                         headers: {
@@ -42,6 +67,7 @@ export default function EditProject() {
                    if (!filterName) {
                          window.location.href="/add-project"
                    } else {
+                  toast.dismiss(loadingToast)
                    setProjectArray(filterName)
                    setNameValue(filterName[0].project_name)
                    const filterDate = new Date(filterName[0].started_date)
@@ -49,31 +75,19 @@ export default function EditProject() {
                    const FilterDueDate = new Date(filterName[0].due_date)
                    setDueDateValue(FilterDueDate.toISOString().split("T")[0])
                    setStatusValue(filterName[0].project_status)
-                   setDescriptionValue(filterName[0].project_description)
+                         setDescriptionValue(filterName[0].project_description)
+                         console.log(filterName)
                    }
             } 
                    fetchProject()
 
       }, [])
       
-                 const sendToServer = async () => {
-                 const ClientToken = Cookies.get("access-token")
-                  const sendCookie = await fetch("/API/cli/project/edit-project", {
-                        method: "post",
-                        headers: {
-                              "Content-Type":"application/json"
-                        },
-                        body: JSON.stringify({
-                              user_token: ClientToken,
-                              projectId:decodeURI(projectId)
-                        })
-                  })
-                  const serverResponse = await sendCookie.json()
-                  console.log(serverResponse)
-            }
+
 
       return <>
             <SideNavBar />
+            <Toaster/>
             <div className="container-edit-project ml-[400px] pt-[100px]">
                   <div className="heading-project text-[18]">
                         <h1>Edit Project / {decodeURI(projectId)} / <span className="text-blue-500">{ ProjectArray?.[0].project_name}</span></h1>
@@ -109,7 +123,7 @@ export default function EditProject() {
                         </div>
 
                                 <div className="span-hover mb-[30px]">
-                        <button className="bg-amber-400 w-[500px] h-[45px] cursor-pointer">Save Changes</button>
+                        <button onClick={sendToServer} className="bg-amber-400 w-[500px] h-[45px] cursor-pointer">Save Changes</button>
                         </div>
 
                   </div>
