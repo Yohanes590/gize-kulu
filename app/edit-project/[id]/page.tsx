@@ -5,25 +5,45 @@ import Cookies from "js-cookie"
 import { useState , useEffect } from "react"
 export default function EditProject() {
 
+      const params = useParams()
+      const projectId = params.id as string
       useEffect(() => {
-            const sendToServer = async () => {
+             const fetchProject = async () => {
+                 const ClientToken = Cookies.get("access-token")
+                  const sendCookie = await fetch("/API/cli/project/show-projects", {
+                        method: "post",
+                        headers: {
+                              "Content-Type":"application/json"
+                        },
+                        body: JSON.stringify({
+                              user_token: ClientToken,
+                        })
+                  })
+                   const serverResponse = await sendCookie.json()
+                   const filterName = serverResponse.filter((id:{id:string}) => id.id ===decodeURI(projectId) )
+                   console.log(filterName)
+                   
+            } 
+                   fetchProject()
+
+      }, [])
+      
+                 const sendToServer = async () => {
+                 const ClientToken = Cookies.get("access-token")
                   const sendCookie = await fetch("/API/cli/project/edit-project", {
                         method: "post",
                         headers: {
                               "Content-Type":"application/json"
                         },
                         body: JSON.stringify({
-                              message:"connected"
+                              user_token: ClientToken,
+                              projectId:decodeURI(projectId)
                         })
                   })
                   const serverResponse = await sendCookie.json()
                   console.log(serverResponse)
-            } 
-        sendToServer()    
-      },[])
+            }
 
-      const params = useParams()
-      const projectId = params.id as string
       return <>
             <SideNavBar />
             <div className="container-edit-project ml-[400px] pt-[100px]">
