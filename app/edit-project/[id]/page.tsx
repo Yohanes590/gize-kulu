@@ -15,9 +15,16 @@ export default function EditProject() {
       const params = useParams()
       const  [ ProjectArray , setProjectArray ] = useState<projectType[]>() 
       const projectId = params.id as string
+
+
+
+      const [nameValue, setNameValue] = useState<string>("")
+      const [sDateValue, setSDateValue] = useState<string>("")
+      const [dueDateValue, setDueDateValue] = useState<string>("")
+      const [statusValue, setStatusValue] = useState<string>("")
+      const [description ,setDescriptionValue ] =useState<string>("")
       useEffect(() => {
 
-            const [ nameValue , setNameValue ] = useState<string>("")
 
              const fetchProject = async () => {
                  const ClientToken = Cookies.get("access-token")
@@ -34,7 +41,7 @@ export default function EditProject() {
                    const filterName = serverResponse.filter((id:{id:string}) => id.id ===decodeURI(projectId) )
                    console.log(filterName)
                    setProjectArray(filterName)
-                   
+                   setNameValue(filterName[0].project_name)
             } 
                    fetchProject()
 
@@ -65,7 +72,7 @@ export default function EditProject() {
                   <div className="input-section mt-[50px]">
                         <div className="span-hover mb-[30px]">
                               <p>Project Name</p>
-                        <input className="w-[500px] h-[50px] pl-[15px] outline-1 outline-blue-500 mt-[10px] bg-[#f0f0f0]" type="text" placeholder="making some thing *" />
+                        <input value={nameValue} onChange={(e)=>setNameValue(e.target.value)} className="w-[500px] h-[50px] pl-[15px] outline-1 outline-blue-500 mt-[10px] bg-[#f0f0f0]" type="text" placeholder="making some thing *" />
                         </div>
                         <div className="span-hover mb-[30px]">
                               <p>Started Date</p>
