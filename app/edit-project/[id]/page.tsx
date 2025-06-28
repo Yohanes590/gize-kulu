@@ -39,9 +39,18 @@ export default function EditProject() {
                   })
                    const serverResponse = await sendCookie.json()
                    const filterName = serverResponse.filter((id:{id:string}) => id.id ===decodeURI(projectId) )
-                   console.log(filterName)
+                   if (!filterName) {
+                         window.location.href="/add-project"
+                   } else {
                    setProjectArray(filterName)
                    setNameValue(filterName[0].project_name)
+                   const filterDate = new Date(filterName[0].started_date)
+                   setSDateValue(filterDate.toISOString().split("T")[0])
+                   const FilterDueDate = new Date(filterName[0].due_date)
+                   setDueDateValue(FilterDueDate.toISOString().split("T")[0])
+                   setStatusValue(filterName[0].project_status)
+                   setDescriptionValue(filterName[0].project_description)
+                   }
             } 
                    fetchProject()
 
@@ -67,7 +76,7 @@ export default function EditProject() {
             <SideNavBar />
             <div className="container-edit-project ml-[400px] pt-[100px]">
                   <div className="heading-project text-[18]">
-                        <h1>Edit Project / <span className="text-blue-500">{ ProjectArray?.[0].project_name}</span></h1>
+                        <h1>Edit Project / {decodeURI(projectId)} / <span className="text-blue-500">{ ProjectArray?.[0].project_name}</span></h1>
                   </div>
                   <div className="input-section mt-[50px]">
                         <div className="span-hover mb-[30px]">
@@ -76,27 +85,27 @@ export default function EditProject() {
                         </div>
                         <div className="span-hover mb-[30px]">
                               <p>Started Date</p>
-                        <input type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
+                        <input value={sDateValue} onChange={(e)=>setSDateValue(e.target.value)} type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
                         </div>
                         <div className="span-hover mb-[30px]">
                               <p>Due Date</p>
-                        <input type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
+                        <input value={dueDateValue} onChange={(e)=>setDueDateValue(e.target.value)} type="date" className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]" />
                         </div>
 
                          <div className="span-hover mb-[30px]">
                         <p>Started Date</p>
-                              <select className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]">
-                                    <option>In Complete</option>
-                                    <option>Process</option>
-                                    <option>Complete</option>
-                                    <option>Paused</option>
+                              <select value={statusValue} onChange={(e)=>setStatusValue(e.target.value)} className="w-[500px] h-[50px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0]">
+                                    <option value="in-complete">In Complete</option>
+                                    <option value="progress">Progress</option>
+                                    <option value="complete">Complete</option>
+                                    <option value="pause">Paused</option>
                         </select>
                         </div>
                         
 
                   <div className="span-hover">
                         <p>Project Description</p>
-                                    <textarea className="w-[500px] h-[200px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0] pt-[15px]" placeholder="This project ....."></textarea>
+                                    <textarea value={description} onChange={(e)=>setDescriptionValue(e.target.value)} className="w-[500px] h-[200px] outline-1 outline-blue-500 pl-[15px] mt-[10px] bg-[#f0f0f0] pt-[15px]" placeholder="This project ....."></textarea>
                         </div>
 
                                 <div className="span-hover mb-[30px]">
