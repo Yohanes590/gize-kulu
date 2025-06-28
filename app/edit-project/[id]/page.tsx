@@ -4,10 +4,21 @@ import SideNavBar from "@/components/client/side-nav"
 import Cookies from "js-cookie"
 import { useState , useEffect } from "react"
 export default function EditProject() {
-
+      type projectType = {
+            due_date: string,
+            id: string,
+            project_description: string,
+            project_name: string,
+            project_status: string,
+            started_date:string
+      }
       const params = useParams()
+      const  [ ProjectArray , setProjectArray ] = useState<projectType[]>() 
       const projectId = params.id as string
       useEffect(() => {
+
+            const [ nameValue , setNameValue ] = useState<string>("")
+
              const fetchProject = async () => {
                  const ClientToken = Cookies.get("access-token")
                   const sendCookie = await fetch("/API/cli/project/show-projects", {
@@ -22,6 +33,7 @@ export default function EditProject() {
                    const serverResponse = await sendCookie.json()
                    const filterName = serverResponse.filter((id:{id:string}) => id.id ===decodeURI(projectId) )
                    console.log(filterName)
+                   setProjectArray(filterName)
                    
             } 
                    fetchProject()
@@ -48,7 +60,7 @@ export default function EditProject() {
             <SideNavBar />
             <div className="container-edit-project ml-[400px] pt-[100px]">
                   <div className="heading-project text-[18]">
-                        <h1>Edit Project / <span className="text-blue-500">{ decodeURI(projectId) }</span></h1>
+                        <h1>Edit Project / <span className="text-blue-500">{ ProjectArray?.[0].project_name}</span></h1>
                   </div>
                   <div className="input-section mt-[50px]">
                         <div className="span-hover mb-[30px]">
