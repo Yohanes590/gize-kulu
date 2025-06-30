@@ -48,7 +48,8 @@ export default function EditTaskInfo() {
                               <textarea placeholder="description" className="mt-[10px] pt-[20px] w-[1130px] h-[250px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"></textarea>
                               </div>
                         <div className="each-input-section mt-[20px] flex flex-wrap gap-5">
-</div>
+                        <button className="mt-[20px] h-[40px] bg-blue-500 w-[200px] cursor-pointer text-white">Save changes</button>
+                        </div>
                   </div>
         </div>
       </>
