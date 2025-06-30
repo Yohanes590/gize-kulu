@@ -39,6 +39,10 @@ export default function EditTaskInfo() {
                         </div>
                         </div>
                         
+                        <div className="each-input-section mt-[20px] flex flex-wrap gap-5">
+                              <textarea className="mt-[10px] pt-[20px] w-[1130px] h-[250px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"></textarea>
+</div>
+
                   </div>
         </div>
       </>
