@@ -22,10 +22,23 @@ export default function EditTaskInfo() {
                                      <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
                                                        <div className="label">
-                                    <p>Start date</p>
+                                    <p>Due date</p>
                                      <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
                         </div>
+                        
+                        <div className="each-input-section mt-[20px] flex flex-wrap gap-5">
+                              <div className="label">
+                                    <p>Select Status</p>
+                                    <select className="mt-[10px] w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]">
+                                          <option value="">Progress</option>
+                                          <option value="">Compete</option>
+                                          <option value="">Incomplete</option>
+                                          <option value="">Pause</option>
+                                    </select>
+                        </div>
+                        </div>
+                        
                   </div>
         </div>
       </>
