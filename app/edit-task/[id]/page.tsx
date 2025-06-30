@@ -5,6 +5,11 @@ export default function EditTaskInfo() {
       const fetchPrams = params.id as string
       return <>
             <div className="editing-task-part ml-[400px] mt-[150px]">
+
+                  <div className="title-message mb-[20px]">
+                        <p>Edit Task /<span className="text-blue-600">${ fetchPrams }</span> </p>
+                  </div>
+
                   <div className="editing-task-container">
                         <div className="each-input-section mb-[20px] flex flex-wrap gap-5">
                         <input type="text" placeholder="Task title" className="w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]" />
@@ -40,9 +45,10 @@ export default function EditTaskInfo() {
                         </div>
                         
                         <div className="each-input-section mt-[20px] flex flex-wrap gap-5">
-                              <textarea className="mt-[10px] pt-[20px] w-[1130px] h-[250px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"></textarea>
+                              <textarea placeholder="description" className="mt-[10px] pt-[20px] w-[1130px] h-[250px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"></textarea>
+                              </div>
+                        <div className="each-input-section mt-[20px] flex flex-wrap gap-5">
 </div>
-
                   </div>
         </div>
       </>
