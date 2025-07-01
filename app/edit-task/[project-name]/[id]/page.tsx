@@ -2,14 +2,28 @@
 import { useParams } from "next/navigation"
 import SideNavBar from "@/components/client/side-nav"
 import { useEffect } from "react"
+import Cookies from "js-cookie"
 export default function EditTaskInfo() {
       const params = useParams()
       const fetchPrams = params.id as string
       
       useEffect(() => {
-            const fetchTaskInformation = async() => {
-             
-       }     
+
+      const fetchTaskInformation = async () => {
+      const user_token = Cookies.get("access-token")
+      const sendingToken = await fetch("/API/cli/project/project-task", {
+        method: "post",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          user_token:user_token,
+        })
+      })
+            const server_response = await sendingToken.json()
+            console.log(server_response)
+      }  
+      fetchTaskInformation()
       },[])
 
       return <>
