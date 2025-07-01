@@ -114,7 +114,7 @@ export default function ClientProjectDetails() {
               <p>20/02/2025 - 12/06/2025</p>
             </div>
             <div className="button-card-section mt-[20px] flex flex-wrap">
-              <button onClick={()=>window.location.href=`/edit-task/${items.id}/${decodeURI(project)}`} className="w-[150px] h-[40px] bg-yellow-500 cursor-pointer text-white">Edit Task </button>
+              <button onClick={()=>window.location.href=`/edit-task/${decodeURI(project)}/${items.id}`} className="w-[150px] h-[40px] bg-yellow-500 cursor-pointer text-white">Edit Task </button>
               <button className="ml-[20px] w-[150px] h-[40px] bg-red-500 cursor-pointer text-white">Delete Task </button>
             </div>
           </div>
