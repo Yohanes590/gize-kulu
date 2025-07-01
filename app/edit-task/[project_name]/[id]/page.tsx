@@ -6,7 +6,7 @@ import Cookies from "js-cookie"
 export default function EditTaskInfo() {
       const params = useParams()
       const fetchPrams = params.id as string
-      const fetchProjectName = params.project_name
+      const fetchProjectName = params.project_name as string
       useEffect(() => {
 
       const fetchTaskInformation = async () => {
@@ -31,7 +31,7 @@ export default function EditTaskInfo() {
             <div className="editing-task-part ml-[400px] pt-[150px]">
 
                   <div className="title-message mb-[20px]">
-                        <p>Edit Task / <span className="text-blue-600">{ fetchPrams }</span> / task name </p>
+                        <p>Edit Task / { decodeURI(fetchProjectName)} / <span className="text-blue-600">{ fetchPrams }</span> / task name </p>
                   </div>
 
                   <div className="editing-task-container">
