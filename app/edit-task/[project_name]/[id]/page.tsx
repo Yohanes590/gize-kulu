@@ -6,7 +6,7 @@ import Cookies from "js-cookie"
 export default function EditTaskInfo() {
       const params = useParams()
       const fetchPrams = params.id as string
-      
+      const fetchProjectName = params.project_name
       useEffect(() => {
 
       const fetchTaskInformation = async () => {
