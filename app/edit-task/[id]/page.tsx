@@ -1,13 +1,23 @@
 "use client"
 import { useParams } from "next/navigation"
+import SideNavBar from "@/components/client/side-nav"
+import { useEffect } from "react"
 export default function EditTaskInfo() {
       const params = useParams()
       const fetchPrams = params.id as string
+      
+      useEffect(() => {
+            const fetchTaskInformation = async() => {
+             
+       }     
+      },[])
+
       return <>
-            <div className="editing-task-part ml-[400px] mt-[150px]">
+            <SideNavBar/>
+            <div className="editing-task-part ml-[400px] pt-[150px]">
 
                   <div className="title-message mb-[20px]">
-                        <p>Edit Task /<span className="text-blue-600">${ fetchPrams }</span> </p>
+                        <p>Edit Task / <span className="text-blue-600">{ fetchPrams }</span> / task name </p>
                   </div>
 
                   <div className="editing-task-container">
@@ -26,7 +36,7 @@ export default function EditTaskInfo() {
                                     <p>Start date</p>
                                      <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
-                                                       <div className="label">
+                              <div className="label">
                                     <p>Due date</p>
                                      <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
