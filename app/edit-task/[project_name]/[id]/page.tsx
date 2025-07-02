@@ -20,7 +20,9 @@ export default function EditTaskInfo() {
             const TaskTitleInput = document.querySelector(".task-title") as HTMLInputElement 
             const PriorityInput = document.querySelector(".priority") as HTMLInputElement 
             const StartDateInput = document.querySelector(".start-date") as HTMLInputElement
-
+            const DueDateInput = document.querySelector(".dueDate") as HTMLInputElement
+            const TaskProgress = document.querySelector(".task-status") as HTMLInputElement 
+            const TaskDescription = document.querySelector(".task-description") as HTMLInputElement
 
             const fetchTaskInformation = async () => {
                   const user_token = Cookies.get("access-token")
@@ -48,6 +50,7 @@ export default function EditTaskInfo() {
       return <>
             <SideNavBar/>
             <div className="editing-task-part ml-[400px] pt-[150px]">
+                  
 
                   <div className="title-message mb-[20px]">
                         <p>Edit Task / { decodeURI(fetchProjectName)} / <span className="text-blue-600">{ fetchPrams }</span> / task name </p>
@@ -55,8 +58,8 @@ export default function EditTaskInfo() {
 
                   <div className="editing-task-container">
                         <div className="each-input-section mb-[20px] flex flex-wrap gap-5">
-                        <input type="text" placeholder="Task title" className="w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]" />
-                        <select className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]">
+                        <input type="text" placeholder="Task title" className="task-title w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]" />
+                        <select className="priority w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]">
                               <option value="low">Select Priority</option>
                               <option value="low">Low</option>
                               <option value="medium">Medium</option>
@@ -67,11 +70,11 @@ export default function EditTaskInfo() {
                         <div className="each-input-section flex flex-wrap gap-5">
                               <div className="label">
                                     <p>Start date</p>
-                                     <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
+                                     <input type="date"  className="start-date w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
                               <div className="label">
                                     <p>Due date</p>
-                                     <input type="date"  className=" w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
+                                     <input type="date"  className="dueDate w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"/>
                               </div>
                         </div>
                         
@@ -79,10 +82,10 @@ export default function EditTaskInfo() {
                               <div className="label">
                                     <p>Select Status</p>
                                     <select className="mt-[10px] w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]">
-                                          <option value="">Progress</option>
-                                          <option value="">Compete</option>
-                                          <option value="">Incomplete</option>
-                                          <option value="">Pause</option>
+                                          <option value="IN PROGRESS">IN PROGRESS</option>
+                                          <option value="COMPLETE">COMPLETE</option>
+                                          <option value="IN COMPLETE">IN COMPLETE</option>
+                                          <option value="PAUSE">PAUSE</option>
                                     </select>
                         </div>
                         </div>
