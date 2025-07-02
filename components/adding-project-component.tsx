@@ -61,7 +61,6 @@ export default function AddingProjectFunction() {
             } else {
                   toast.error(serverResponse.message)
             }
-            console.log(serverResponse)
            }
       }
       return (<>

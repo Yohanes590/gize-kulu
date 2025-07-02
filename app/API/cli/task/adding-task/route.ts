@@ -6,10 +6,11 @@ export async function POST(ClientRequest: Request) {
       const taskObject = {
       id:UserRequest.id,
       task_name: UserRequest.task_name,
+      project_priority:UserRequest.project_priority,
       status: UserRequest.status,
       start_date: UserRequest.start_date,
       due_date: UserRequest.due_date,
-      title_description:UserRequest.title_description
+      title_description:UserRequest.title_description,
             };
       if (!DecodeAccessKey) {
             return Response.json({message:"internal server error" , status:500})

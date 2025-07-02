@@ -55,7 +55,8 @@ export default function AddingTaskFunction() {
                               due_date: dueDateValue,
                               title_description: TaskDes.value,
                               user_Token:userToken,
-                              project_name:gettingProjectName
+                              project_name: gettingProjectName,
+                              project_priority:priority
                         })
                          })  
             setButton(false)
