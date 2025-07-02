@@ -35,7 +35,6 @@ export default function EditTaskInfo() {
                   if (!filterProjectTask) {
                         window.location.href="/dashboard"
                   } else {
-                        console.log(filterProjectTask)
                         setTaskName(filterProjectTask[0].task_name)
                         setPriority(filterProjectTask[0].project_priority)
                         const StartDateOBJ = new Date(filterProjectTask[0].start_date)
@@ -49,6 +48,8 @@ export default function EditTaskInfo() {
       fetchTaskInformation()
       },[])
 
+
+      
       return <>
             <SideNavBar/>
             <div className="editing-task-part ml-[400px] pt-[150px]">
