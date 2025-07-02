@@ -13,16 +13,10 @@ export default function EditTaskInfo() {
       const [startDate, setStartDate] = useState<string | undefined>("")
       const [dueDate, setDueDate] = useState<string | undefined>("")
       const [progress, setProgress] = useState<string | undefined>("")
-      const [ description , setDescription ] = useState<string | undefined>("")
+      const [description , setDescription] = useState<string | undefined>("")
 
       useEffect(() => {
 
-            // const TaskTitleInput = document.querySelector(".task-title") as HTMLInputElement 
-            // const PriorityInput = document.querySelector(".priority") as HTMLInputElement 
-            // const StartDateInput = document.querySelector(".start-date") as HTMLInputElement
-            // const DueDateInput = document.querySelector(".dueDate") as HTMLInputElement
-            // const TaskProgress = document.querySelector(".task-status") as HTMLInputElement 
-            // const TaskDescription = document.querySelector(".task-description") as HTMLInputElement
 
             const fetchTaskInformation = async () => {
                   const user_token = Cookies.get("access-token")
@@ -43,7 +37,13 @@ export default function EditTaskInfo() {
                   } else {
                         console.log(filterProjectTask)
                         setTaskName(filterProjectTask[0].task_name)
-                        setPriority(filterProjectTask[0].task_name)
+                        setPriority(filterProjectTask[0].project_priority)
+                        const StartDateOBJ = new Date(filterProjectTask[0].start_date)
+                        setStartDate(StartDateOBJ.toISOString().split("T")[0])
+                        const DueDateOBJ = new Date(filterProjectTask[0].due_date)
+                        setDueDate(DueDateOBJ.toISOString().split("T")[0])
+                        setProgress(filterProjectTask[0].status)
+                        setDescription(filterProjectTask[0].title_description)
                   }
       }  
       fetchTaskInformation()
@@ -55,14 +55,14 @@ export default function EditTaskInfo() {
                   
 
                   <div className="title-message mb-[20px]">
-                        <p>Edit Task / { decodeURI(fetchProjectName)} / <span className="text-blue-600">{ fetchPrams }</span> / task name </p>
+                        <p>Edit Task / {decodeURI(fetchProjectName)} / <span className="text-blue-600">{fetchPrams}</span> / {TaskName} </p>
                   </div>
 
                   <div className="editing-task-container">
                         <div className="each-input-section mb-[20px] flex flex-wrap gap-5">
                         <input type="text" value={TaskName} onChange={(e)=>setTaskName(e.target.value)} placeholder="Task title" className="task-title w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]" />
                         <select value={Priority} onChange={(e)=>setPriority(e.target.value)} className="priority w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]">
-                              <option value="low">Select Priority</option>
+                              <option value="">Select Priority</option>
                               <option value="low">Low</option>
                               <option value="medium">Medium</option>
                               <option value="high">High</option>
