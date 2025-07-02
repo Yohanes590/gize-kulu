@@ -43,10 +43,8 @@ export default function EditProject() {
                         })
                   })
                   const serverResponse = await sendCookie.json()
-                  console.log(serverResponse)
             }
 
-// 0919374426
       useEffect(() => {
 
 
@@ -75,8 +73,7 @@ export default function EditProject() {
                    const FilterDueDate = new Date(filterName[0].due_date)
                    setDueDateValue(FilterDueDate.toISOString().split("T")[0])
                    setStatusValue(filterName[0].project_status)
-                         setDescriptionValue(filterName[0].project_description)
-                         console.log(filterName)
+                   setDescriptionValue(filterName[0].project_description)
                    }
             } 
                    fetchProject()

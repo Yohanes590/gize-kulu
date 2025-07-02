@@ -5,7 +5,6 @@ import SideNavBar from "@/components/client/side-nav";
 import { useState, useEffect } from "react"; 
 import Cookies from "js-cookie";
 import { toast , Toaster} from "react-hot-toast";
-import Link from "next/link";
 export default function ClientProjectDetails() {
   const params = useParams();
   const project = params.project as string

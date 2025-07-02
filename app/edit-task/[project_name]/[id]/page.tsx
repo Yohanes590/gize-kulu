@@ -1,27 +1,46 @@
 "use client"
 import { useParams } from "next/navigation"
 import SideNavBar from "@/components/client/side-nav"
-import { useEffect } from "react"
+import { useEffect , useState } from "react"
 import Cookies from "js-cookie"
 export default function EditTaskInfo() {
       const params = useParams()
       const fetchPrams = params.id as string
       const fetchProjectName = params.project_name as string
+
+      const [TaskName, setTaskName] = useState<string>("")
+      const [Priority, setPriority] = useState<string>("")
+      const [startDate, setStartDate] = useState<string>("")
+      const [dueDate, setDueDate] = useState<string>("")
+      const [progress, setProgress] = useState<string>("")
+      const [ description , setDescription ] = useState<string>("")
+
       useEffect(() => {
 
-      const fetchTaskInformation = async () => {
-      const user_token = Cookies.get("access-token")
-      const sendingToken = await fetch("/API/cli/project/project-task", {
-        method: "post",
-        headers: {
-          "Content-Type":"application/json"
-        },
-        body: JSON.stringify({
-          user_token:user_token,
-        })
-      })
-            const server_response = await sendingToken.json()
-            console.log(server_response)
+            const TaskTitleInput = document.querySelector(".task-title") as HTMLInputElement 
+            const PriorityInput = document.querySelector(".priority") as HTMLInputElement 
+            const StartDateInput = document.querySelector(".start-date") as HTMLInputElement
+
+
+            const fetchTaskInformation = async () => {
+                  const user_token = Cookies.get("access-token")
+                  const sendingToken = await fetch("/API/cli/project/project-task", {
+                        method: "post",
+                        headers: {
+                              "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                              user_token: user_token,
+                        })
+                  })
+                  const server_response = await sendingToken.json()
+                  const GettingProjectTask = server_response[0].project_task
+                  const filterProjectTask = GettingProjectTask.filter((id: { id: string }) => id.id === fetchPrams)
+                  if (!filterProjectTask) {
+                        window.location.href="/dashboard"
+                  } else {
+                        console.log(filterProjectTask)
+                  }
       }  
       fetchTaskInformation()
       },[])
