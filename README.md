@@ -7,33 +7,34 @@ It allows users to register, verify via email, create/manage projects and tasks,
 
 ---
 
+## 📸 Screenshot
+
+![Gezi Kulu Screenshot](./public/about-pic-cover.png)
+
+---
+
 ## 🛠️ Tech Stack
 
-- **Frontend**: [Next.js 14 (App Router)](https://nextjs.org), [Tailwind CSS](https://tailwindcss.com), [shadcn/ui](https://ui.shadcn.com)
-- **Backend**: Next.js API Routes, [Prisma ORM](https://www.prisma.io/), [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-- **Auth**: JWT (Access + Refresh Tokens), OTP Email Verification (via NodeMailer)
-- **Charts**: Recharts (monthly analytics)
-- **Hosting**: [Vercel](https://vercel.com)
+- **Frontend**: Next.js 14 App Router, Tailwind CSS, shadcn/ui
+- **Backend**: Next.js API Routes, Prisma ORM, MongoDB
+- **Authentication**: JWT Auth (Access & Refresh), OTP Email Verification
+- **Email**: NodeMailer
+- **Charts**: Recharts
+- **Deployment**: Vercel
 
 ---
 
 ## ✨ Features
 
-- 🔐 **User Registration/Login** with OTP Email Verification
-- 🔄 **JWT Authentication** (Access + Refresh Tokens)
-- 📁 **Project Management**: Add, edit, delete projects
-- ✅ **Task Management**: Add, edit, delete tasks under projects
-- 📊 **Dashboard Analytics**: Complete vs Incomplete projects per month (Bar Chart)
-- 📅 **Due Dates**, **Status**, and **Priority** for tasks
-- 🔒 **Protected Routes** with server-side JWT check
-- 📱 **Responsive Design** (mobile-friendly)
-- 💌 **Login Notification Email**
-
----
-
-## 📸 Screenshots
-
-> Add screenshots here (Login, Dashboard, Chart, Project Table...)
+- 🔐 OTP-based Signup + Login
+- 🔄 JWT Authentication
+- 📁 Create/Edit/Delete Projects
+- ✅ Create/Edit/Delete Tasks per Project
+- 📊 Dashboard Chart: Complete vs Incomplete by Month
+- 📅 Task Due Dates, Status, Priority
+- 🔒 Auth-protected Routes
+- 💌 Email Notification on Login
+- 📱 Fully Responsive UI
 
 ---
 
