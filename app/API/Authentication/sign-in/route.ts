@@ -69,6 +69,6 @@ try {
       }
 } catch (error:unknown) {
   console.error("🔥 BACKEND ERROR:", error);
-  return Response.json({ message: "Server error", error: String(error) }, { status: 500 });
+  return Response.json({ message:String(error), error: String(error) }, { status: 500 });
 }
 }
