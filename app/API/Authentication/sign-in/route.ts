@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import nodemailer from 'nodemailer'
 export async function POST(userRequest: Request) {
-      const userData = await userRequest.json()
+try {
+            const userData = await userRequest.json()
       const checkVerification = await prisma.user.findUnique({
             where: {
                   user_email:userData.user_email
@@ -66,4 +67,8 @@ export async function POST(userRequest: Request) {
       } else {
       return Response.json({message:"account not found" , status:404})
       }
+} catch (error:unknown) {
+  console.error("🔥 BACKEND ERROR:", error);
+  return Response.json({ message: "Server error", error: String(error) }, { status: 500 });
+}
 }
