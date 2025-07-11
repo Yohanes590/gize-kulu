@@ -15,7 +15,7 @@ export async function POST(userRequest: Request) {
            })
             const filterProject = await project_task?.user_projects
             return Response.json(filterProject)
-      } catch (error) {
+      } catch (_error:unknown) {
             return Response.json({message:"expired token" , status:400})
       }
 }

@@ -26,8 +26,8 @@ export async function POST(clientINFO: Request) {
                         return Response.json({basicInfo,status:200})
                   }
             }
-      } catch (error) {
-            
+      } catch (_error:unknown) {
+            return Response.json({message:"internal server error" , status:500})
       }
       return Response.json(userInput)
 }

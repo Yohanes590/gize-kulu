@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     message: "Project updated successfully",
     user: updatedUser,
   });
-      } catch (error) {
+      } catch (_error:unknown) {
             return Response.json({message:"token expires" ,status:400})
       }
 

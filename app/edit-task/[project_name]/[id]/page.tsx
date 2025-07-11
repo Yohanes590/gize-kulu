@@ -57,7 +57,7 @@ export default function EditTaskInfo() {
         setDueDate(new Date(task.due_date).toISOString().slice(0, 10));
         setProgress(task.status);
         setDescription(task.title_description);
-      } catch (error) {
+      } catch (_error:unknown) {
         toast.dismiss(loadingInputField);
         toast.error("Failed to load task information");
       }
@@ -111,7 +111,7 @@ export default function EditTaskInfo() {
       } else {
         toast.error(data.message || "Failed to update task");
       }
-    } catch (error) {
+    } catch (error:unknown) {
       toast.dismiss(loading);
       toast.error("Network error. Please try again.");
     }

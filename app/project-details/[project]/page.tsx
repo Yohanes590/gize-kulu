@@ -118,7 +118,7 @@ export default function ClientProjectDetails() {
                   No task found!
                 </h1>
                 <h1 className="text-[#aaaaaa]">
-                  Please click 'Add Task' and customize it.
+                  Please click Add Task and customize it.
                 </h1>
                 <button
                   onClick={() => (window.location.href = "/add-task")}

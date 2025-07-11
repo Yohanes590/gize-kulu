@@ -13,9 +13,9 @@ export async function POST(userRequest: Request) {
       }
  })
     return Response.json(UserDetailedInfo)
-  } catch(error:any) {
+  } catch(_error:unknown) {
     return Response.json({
-      message:error.message,
+      message:"internal server error",
       status:400
     })
   }

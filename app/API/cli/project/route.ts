@@ -31,7 +31,7 @@ export async function POST(userRequest: Request) {
             ]
      })
       return Response.json({message:"project added successfully!" , status:200})
-      } catch (error) {
+      } catch (_error:unknown) {
       return Response.json({message:"can't added project",status:500})
       }
 }

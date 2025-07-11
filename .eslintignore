@@ -1,0 +1,22 @@
+# Ignore node and build artifacts
+node_modules
+.next
+dist
+out
+build
+
+# Ignore lockfiles, environment configs, and temp files
+package-lock.json
+yarn.lock
+.env
+.env.local
+
+# Ignore public assets
+public/
+
+# Ignore Prisma wasm (compiled JS/wasm)
+prisma/wasm.js
+
+# Optional: ignore compiled TS files (if you compile separately)
+**/*.js
+**/*.d.ts

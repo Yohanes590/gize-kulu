@@ -62,7 +62,7 @@ export async function POST(req: Request) {
         headers: { "Content-Type": "application/json" },
       }
     );
-  } catch (error) {
+  } catch (_error:unknown) {
     return new Response(
       JSON.stringify({ message: "Token expired or invalid", status: 400 }),
       { status: 400, headers: { "Content-Type": "application/json" } }

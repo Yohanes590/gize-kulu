@@ -53,7 +53,7 @@ export async function POST(userRequest: Request) {
                    try {
                          await transport.sendMail(mailOption)
              return Response.json({message:"login success" , status:200 , accessToken:LoginToken})
-                    } catch (error) {
+                    } catch (_error:unknown) {
                    return Response.json({ message: "cant send mail", status: 400 })
                    }
             

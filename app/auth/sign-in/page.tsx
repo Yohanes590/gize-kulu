@@ -124,7 +124,7 @@ export default function SignIN() {
                   <div className="center-element bg-[white] rounded-[10px] flex justify-center items-center  h-[250px] w-[400px]">
                         <div className="otp-compo">
                         <h1>Please verify your account.<br/>
-                        Click "Send OTP" to receive your OTP.</h1>
+                        Click Send OTP to receive your OTP.</h1>
                               <div className="otp mt-[5px]">
                         <SignInOTP value={otp} onChange={setOTP}/>
                               </div>
@@ -153,7 +153,7 @@ export default function SignIN() {
                                         <div className="loading hidden"> <PuffLoader size={20} color="#ffffff" /></div> 
                                     </button>
                               <div className="small-message mt-[30px]">
-                                    <p className="text-[#6e6e6e]">I don't have account <Link className="text-blue-500" href="/auth/sign-up">Sign Up</Link></p>
+                                    <p className="text-[#6e6e6e]">I don&apos;t have account <Link className="text-blue-500" href="/auth/sign-up">Sign Up</Link></p>
                               </div>
                               </div>
 

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
                   }
             }) 
       return Response.json(userInfo?.user_projects) 
-      } catch (error) {
+      } catch (_error:unknown) {
             return Response.json({message:"please login again!" , status:400})
       }
 

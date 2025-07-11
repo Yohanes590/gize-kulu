@@ -44,7 +44,7 @@ export default function Dashboard() {
           completeProjects,
           incompleteProjects,
         })
-      } catch (err) {
+      } catch (_error:unknown) {
         toast.error("Failed to load dashboard data")
       } finally {
         setLoading(false)

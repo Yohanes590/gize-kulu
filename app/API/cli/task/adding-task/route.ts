@@ -32,7 +32,7 @@ export async function POST(ClientRequest: Request) {
                   }]
             })
              return Response.json({message:"task success full added" , status:200})
-           } catch (error) {
+           } catch (_error:unknown) {
                  return Response.json({ message: "invalid token", status:500})
            }
       }

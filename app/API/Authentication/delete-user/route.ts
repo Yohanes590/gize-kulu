@@ -14,7 +14,7 @@ export async function POST(userEachRequest: Request) {
                         }
                   })
               return Response.json({message:deleted,status:200})
-            } catch (error) {
+            } catch (_error:unknown) {
                   return Response.json({ message: "token error", status:400})
             }
 }

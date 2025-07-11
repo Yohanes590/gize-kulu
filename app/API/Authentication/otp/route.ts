@@ -45,13 +45,13 @@ export async function POST(userRequest: Request) {
                         try {
                               await transport.sendMail(mailOption)
                               return Response.json({message:"send success fully",status:200,otpToken:OTP_TOKEN})
-                        } catch (error) {
+                        } catch (_error:unknown) {
                               return Response.json({message:"something wen't error",status:500})
                         }
       
    
-            } catch (error:any) {
-                  return Response.json({message: error.message})   
+            } catch (_error:unknown) {
+                  return Response.json({message: "internal server error" , status:500})   
             }
   
       }
