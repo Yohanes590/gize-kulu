@@ -67,10 +67,10 @@ export default function Dashboard() {
           </div>
           <div className="flex flex-wrap gap-5">
             {[
-              { title: "Total Projects", value: analytics?.totalProjects, color: "blue", icon: <FaFolder size={25} /> },
-              { title: "Paused Projects", value: analytics?.pausedProjects, color: "orange", icon: <MdTask size={25} /> },
-              { title: "Completed Projects", value: analytics?.completeProjects, color: "green", icon: <SiTask size={25} /> },
-              { title: "Incomplete Projects", value: analytics?.incompleteProjects, color: "red", icon: <FaFolder size={25} /> },
+              { title: "Total Projects", value: analytics?.totalProjects, color: "blue", icon: <FaFolder color="blue" size={25} /> },
+              { title: "Paused Projects", value: analytics?.pausedProjects, color: "orange", icon: <MdTask color="orange" size={25} /> },
+              { title: "Completed Projects", value: analytics?.completeProjects, color: "green", icon: <SiTask color="green" size={25} /> },
+              { title: "Incomplete Projects", value: analytics?.incompleteProjects, color: "red", icon: <FaFolder color="red" size={25} /> },
             ].map((card, idx) => (
               <div
                 key={idx}
