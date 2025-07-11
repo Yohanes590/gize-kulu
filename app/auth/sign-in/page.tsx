@@ -108,6 +108,7 @@ export default function SignIN() {
             })
             const serverResponding = await SendForServer.json()
             toast.dismiss(Au)
+            console.log(serverResponding)
             if (serverResponding.status === 200) {
                   Cookie.remove("OTP-TOKEN")
                   toast.success(serverResponding.message)
