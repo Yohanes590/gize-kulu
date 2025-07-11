@@ -5,8 +5,8 @@ import DatePicker from "./client/seletion-3"
 import DatePicker2 from "./client/section-4"
 import SelectionThree from "./client/todo-listing"
 import ProjectSelection from "./client/project-selection"
-import { Toaster, toast } from 'react-hot-toast'
-import { useEffect , useState} from "react"
+import {  toast } from 'react-hot-toast'
+import { useState} from "react"
 import Cookies from "js-cookie"
 export default function AddingTaskFunction() {
 

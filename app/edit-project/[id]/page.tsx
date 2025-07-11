@@ -26,7 +26,8 @@ export default function EditProject() {
       const [description, setDescriptionValue] = useState<string>("")
       
                  const sendToServer = async () => {
-                 const ClientToken = Cookies.get("access-token")
+                       const ClientToken = Cookies.get("access-token")
+                       const updatingLoading = toast.loading("updating project ...")
                   const sendCookie = await fetch("/API/cli/project/edit-project", {
                         method: "post",
                         headers: {
@@ -42,7 +43,14 @@ export default function EditProject() {
                               project_status:statusValue,
                         })
                   })
-                  const serverResponse = await sendCookie.json()
+                       const serverResponse = await sendCookie.json()
+                       console.log(serverResponse)
+                       toast.dismiss(updatingLoading)
+                       if (serverResponse.message === "Project updated successfully") {
+                             toast.success(serverResponse.message)
+                       } else {
+                             toast.success("can't update project")
+                       }
             }
 
       useEffect(() => {
@@ -109,7 +117,7 @@ export default function EditProject() {
                                     <option value="in-complete">In Complete</option>
                                     <option value="progress">Progress</option>
                                     <option value="complete">Complete</option>
-                                    <option value="pause">Paused</option>
+                                    <option value="paused">Paused</option>
                         </select>
                         </div>
                         

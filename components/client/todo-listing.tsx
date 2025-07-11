@@ -21,10 +21,10 @@ export default function SelectionThree({selectValue , valueChange}:SelectionType
     <SelectValue placeholder="Select Status" />
   </SelectTrigger>
   <SelectContent>
-    <SelectItem value="IN PROGRESS">IN PROGRESS</SelectItem>
-    <SelectItem value="COMPLETE">COMPLETE</SelectItem>
-    <SelectItem value="IN COMPLETE">IN COMPLETE</SelectItem>
-    <SelectItem value="PAUSE">PAUSE</SelectItem>
+    <SelectItem value="progress">IN PROGRESS</SelectItem>
+    <SelectItem value="complete">COMPLETE</SelectItem>
+    <SelectItem value="in-complete">IN COMPLETE</SelectItem>
+    <SelectItem value="paused">PAUSE</SelectItem>
   </SelectContent>
 </Select>
       </>)
