@@ -8,7 +8,7 @@ import { CgMenuRightAlt } from "react-icons/cg";
 import { useState, useEffect } from "react";
 import LoadingBlur from "../loading-blur";
 import Cookies from "js-cookie"
-import {toast , Toaster} from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 export default function SideNavBar() {
       const UserCookie = Cookies.get("access-token")
       useEffect(() => {
@@ -118,7 +118,14 @@ export default function SideNavBar() {
                               <Link href="/add-project"><div id="add-project" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><MdOutlinePlaylistAdd/>Add Project</div></Link>
                               <Link href="/setting"><div id="setting" className="hover-buttons w-[100%] h-[50px] flex items-center gap-3 pl-[10px] cursor-pointer"><IoSettings />Setting</div></Link>
                               <Link href=""><div className="logout-button mt-[100px]  cursor-pointer">
-                                    <div className="logout-hover w-[100%] pl-[10px] h-[50px] text-red-500 transition duration-500 hover:bg-red-400 hover:text-white flex items-center gap-5"><RiLogoutCircleLine/>Logout</div>
+                                    <div onClick={() => {
+                                          if (confirm("are you sure for logout?")) {
+                                                Cookies.remove("access-token")
+                                          window.location.reload()
+                                          } else {
+                                                toast.success("process canceled")
+                                 }
+                                    }} className="logout-hover w-[100%] pl-[10px] h-[50px] text-red-500 transition duration-500 hover:bg-red-400 hover:text-white flex items-center gap-5"><RiLogoutCircleLine/>Logout</div>
                               </div></Link>
                   </div>
 
