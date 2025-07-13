@@ -179,10 +179,10 @@ export default function EditTaskInfo() {
                 onChange={(e) => setProgress(e.target.value)}
                 className="task-status mt-[10px] w-[550px] h-[40px] pl-[20px] outline-1 outline-blue-500 bg-[#f1f1f1]"
               >
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="COMPLETE">COMPLETE</option>
-                <option value="IN COMPLETE">IN COMPLETE</option>
-                <option value="PAUSE">PAUSE</option>
+                <option value="progress">IN PROGRESS</option>
+                <option value="complete">COMPLETE</option>
+                <option value="in-complete">IN COMPLETE</option>
+                <option value="paused">PAUSE</option>
               </select>
             </div>
           </div>
