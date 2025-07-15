@@ -6,7 +6,7 @@ import  "./style.css"
 export default function AboutPage() {
       return <>
       
-            <div className="about-container h-[500px]">
+            <div id="features" className="about-container h-[500px]">
 
                   <div className="about-header text-center">
                         <h1 className="font-bold text-[40px] text-[#5e5e5e]">Main Features </h1>
